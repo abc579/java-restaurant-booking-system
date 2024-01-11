@@ -18,7 +18,7 @@ The Roccatagliatta Reservation System includes the following features:
 ### For Restaurant Staff
 
 0. **Manage Reservations**: Staff can view, confirm, modify, or cancel reservations.
-1. **Table Management**: Allocate tables efficiently based on reservation details and restaurant capacity.
+1. **Table Management**: Allocate tables efficiently based on reservation details and restaurant capacity. (@NOTE: perhaps for later)
 2. **Customer Management**: Keep track of returning customers and their preferences.
 3. **Menu Management**: Update the menu items, prices, and availability.
 
@@ -37,3 +37,32 @@ The Roccatagliatta Reservation System includes the following features:
 ## Getting Started
 
 @TODO
+
+## Actions
+
+### Customer (for all of these, the customer needs to be logged in)
+
+0. As a customer, I'd want to know what the restaurant offers to eat that day, so I need to be able to see the menu.
+1. As a customer, I'd like to see if there's space available in the restaurant on a given day.
+2. As a customer, I'd like to make a reservation on a given day, selecting an available time and menu option (*).
+3. As a customer, once I made my reservation, I'd like to cancel it.
+4. As a customer, once I made my reservation, I'd like to try and change the day or hour.
+5. As a customer, the moment I do my reservation, I'd like to add a comment indicating that I'm allergic to something.
+
+### Staff
+
+### Waitress
+
+0. As a waiter, I'd like to see who's coming in today, i.e, reservations. To prepare the corresponding tables, warn cooks, etc.
+1. As a waiter, if someone calls and I pick up the phone, I want to register that reservation within the system, so I need to be able to create them.
+2. As a waiter, if someone calls to cancel or modify their reservation, I need to be able to do it.
+
+### Manager
+
+0. As a manager, I'd like to see customer statistics. For example, what are their preferences, what did they eat, etc, and take decisions based on that.
+1. As a manager, I'd like to update menu items and/or prices. Perhaps, if there's an outage of some ingredients, also change availability of some menu options.
+
+### Admin
+
+0. As an admin, I want all options available to me.
+1. As an admin, I additionally want the option of "promote" a waitress to manager and viceversa.
