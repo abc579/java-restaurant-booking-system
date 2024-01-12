@@ -40,6 +40,8 @@ The Roccatagliatta Reservation System includes the following features:
 
 ## Actions
 
+For all of these actions, the user has to be already logged in.
+
 ### Customer (for all of these, the customer needs to be logged in)
 
 0. As a customer, I'd want to know what the restaurant offers to eat that day, so I need to be able to see the menu.
