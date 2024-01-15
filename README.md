@@ -36,8 +36,6 @@ The Roccatagliatta Reservation System includes the following features:
 
 ## Getting Started
 
-@TODO
-
 ## Actions
 
 For all of these actions, the user has to be already logged in.
@@ -68,3 +66,7 @@ For all of these actions, the user has to be already logged in.
 
 0. As an admin, I want all options available to me.
 1. As an admin, I additionally want the option of "promote" a waitress to manager and viceversa.
+
+## TO DO
+
+- Implement login system.

@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  java:
+    build:
+      context: ./
+      args:
+        HOST_USER_ID: ${HOST_USER_ID}
+        HOST_GROUP_ID: ${HOST_GROUP_ID}
+        HOST_USER_NAME: ${HOST_USER_NAME}
+        HOST_GROUP_NAME: ${HOST_GROUP_NAME}
+    tty: true
+    user: ${HOST_USER_ID}:${HOST_GROUP_ID}
+    volumes:
+      - ./app:/app
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: "jdbc:mysql://mysql:3306/roccatagliatta"
+      DATABASE_USER: "roccatagliatta"
+      DATABASE_PASSWORD: "secret"
+      DATABASE_DRIVER: "com.mysql.cj.jdbc.Driver"
+    networks:
+      default:
+  mysql:
+    image: mysql:8
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_ROOT_HOST=%
+    networks:
+      default:
+    ports:
+      - "33007:3306"
+
+volumes:
+  mysql_data:
