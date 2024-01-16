@@ -69,4 +69,5 @@ For all of these actions, the user has to be already logged in.
 
 ## TO DO
 
+- Finish value object tests.
 - Implement login system.

@@ -1,15 +1,9 @@
 package com.roccatagliatta.restaurant.User;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import com.roccatagliatta.restaurant.User.Role.Role;
-
 // @TO DO: we're returning references here, that could be dangerous?
 // Perhaps we should return copies of our members so they cannot modify
 // internal data thru' pointers.
 
-@Entity
-@Table(name = "users")
 public final class User {
 
     private UserId id;
@@ -20,19 +14,19 @@ public final class User {
 
     private UserEmail email;
 
-    private Role role;
+    private UserType type;
 
     public User(UserId id,
                 UserName username,
                 UserPassword password,
                 UserEmail email,
-                Role role)
+                UserType type)
     {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = role;
+        this.type = type;
     }
 
     public UserId id() {
@@ -51,7 +45,7 @@ public final class User {
         return email;
     }
 
-    public Role role() {
-        return role;
+    public UserType type() {
+        return type;
     }
 }

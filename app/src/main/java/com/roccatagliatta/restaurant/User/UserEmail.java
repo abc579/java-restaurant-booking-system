@@ -1,7 +1,9 @@
 package com.roccatagliatta.restaurant.User;
 
+import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserEmailException;
+
 final class UserEmail {
-    private static final String REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
+    private static final String REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     private String value;
 
     public UserEmail(String email) {
