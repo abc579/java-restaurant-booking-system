@@ -1,9 +1,5 @@
 package com.roccatagliatta.restaurant.User;
 
-// @TO DO: we're returning references here, that could be dangerous?
-// Perhaps we should return copies of our members so they cannot modify
-// internal data thru' pointers.
-
 public final class User {
 
     private UserId id;
