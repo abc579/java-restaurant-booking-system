@@ -14,10 +14,9 @@ public final class User {
 
     public User(UserId id,
                 UserName username,
-                UserPassword password,
                 UserEmail email,
-                UserType type)
-    {
+                UserPassword password,
+                UserType type) {
         this.id = id;
         this.username = username;
         this.password = password;

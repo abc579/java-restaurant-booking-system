@@ -15,7 +15,7 @@ final class UserTest {
         UserEmail email = new UserEmail("testing@dotcom.com");
         UserType type = UserType.CUSTOMER;
 
-        User validUser = new User(id, name, password, email, type);
+        User validUser = new User(id, name, email, password, type);
 
         assertEquals(id.value(), validUser.id().value());
         assertEquals(name.value(), validUser.username().value());

@@ -3,5 +3,5 @@ create table users (
        username varchar(32) not null unique,
        password varchar(255) not null,
        email varchar(255) not null unique,
-       user_type int not null
+       type int not null
 );
