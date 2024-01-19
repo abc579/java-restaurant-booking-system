@@ -1,5 +1,6 @@
 package com.roccatagliatta.restaurant.User;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -36,9 +37,10 @@ final class UserNameTest {
         };
 
         for (final String valid : validUserNames) {
-            final UserName username = new UserName(valid);
-
-            assertEquals(valid, username.value());
+            assertDoesNotThrow(() -> {
+                final UserName username = new UserName(valid);
+                assertEquals(valid, username.value());
+            });
         }
     }
 }

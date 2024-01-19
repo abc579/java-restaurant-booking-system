@@ -16,12 +16,16 @@ public final class MySQLUserRepository implements UserRepository {
     public Optional<User> findByEmail(UserEmail email) {
         User user = jdbcTemplate.query("select id, username, email, password, type from users where email = ?",
                 (rs, rowNum) -> {
-                    UserId id = new UserId(rs.getString("id"));
-                    UserName name = new UserName(rs.getString("username"));
-                    UserEmail emailDb = new UserEmail(rs.getString("email"));
-                    UserPassword password = new UserPassword(rs.getString("password"));
-                    UserType type = UserType.valueOf(rs.getString("type"));
-                    return new User(id, name, emailDb, password, type);
+                    try {
+                        UserId id = new UserId(rs.getString("id"));
+                        UserName name = new UserName(rs.getString("username"));
+                        UserEmail emailDb = new UserEmail(rs.getString("email"));
+                        UserPassword password = new UserPassword(rs.getString("password"));
+                        UserType type = UserType.valueOf(rs.getString("type"));
+                        return new User(id, name, emailDb, password, type);
+                    } catch (final Exception ex) {
+                        return null;
+                    }
                 }, email).get(0);
 
         return Optional.of(user);
@@ -31,12 +35,16 @@ public final class MySQLUserRepository implements UserRepository {
     public Optional<User> findById(UserId id) {
         User user = jdbcTemplate.query("select id, username, email, password, type from users where id = ?",
                 (rs, rowNum) -> {
-                    UserId idDb = new UserId(rs.getString("id"));
-                    UserName name = new UserName(rs.getString("username"));
-                    UserEmail email = new UserEmail(rs.getString("email"));
-                    UserPassword password = new UserPassword(rs.getString("password"));
-                    UserType type = UserType.valueOf(rs.getString("type"));
-                    return new User(idDb, name, email, password, type);
+                    try {
+                        UserId idDb = new UserId(rs.getString("id"));
+                        UserName name = new UserName(rs.getString("username"));
+                        UserEmail email = new UserEmail(rs.getString("email"));
+                        UserPassword password = new UserPassword(rs.getString("password"));
+                        UserType type = UserType.valueOf(rs.getString("type"));
+                        return new User(idDb, name, email, password, type);
+                    } catch (final Exception ex) {
+                        return null;
+                    }
                 }, id).get(0);
 
         return Optional.of(user);
@@ -45,11 +53,11 @@ public final class MySQLUserRepository implements UserRepository {
     @Override
     public void save(User user) {
         jdbcTemplate.update("insert into users (id, username, email, password, type) values (?, ?, ?, ?, ?)",
-                            user.id(),
-                            user.username(),
-                            user.email(),
-                            user.password(),
-                            user.type());
+                user.id(),
+                user.username(),
+                user.email(),
+                user.password(),
+                user.type());
     }
 
 }

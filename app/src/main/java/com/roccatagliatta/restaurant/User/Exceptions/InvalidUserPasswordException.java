@@ -1,5 +1,5 @@
 package com.roccatagliatta.restaurant.User.Exceptions;
 
-public final class InvalidUserPasswordException extends RuntimeException {
+public final class InvalidUserPasswordException extends Exception {
 
 }

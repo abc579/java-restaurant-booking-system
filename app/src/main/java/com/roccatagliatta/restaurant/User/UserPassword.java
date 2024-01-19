@@ -4,9 +4,9 @@ import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserPasswordExceptio
 
 final class UserPassword {
     private String value;
-    private static final String REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,32}$";
+    private static final String REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 
-    public UserPassword(String password) {
+    public UserPassword(String password) throws InvalidUserPasswordException {
         if (password == null || !password.matches(REGEX)) {
             throw new InvalidUserPasswordException();
         }

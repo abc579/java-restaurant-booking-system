@@ -1,5 +1,6 @@
 package com.roccatagliatta.restaurant.User;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -28,9 +29,10 @@ final class UserEmailTest {
                 "heather@maine.us" };
 
         for (final String valid : validEmails) {
-            final UserEmail email = new UserEmail(valid);
-
-            assertEquals(valid, email.value());
+            assertDoesNotThrow(() -> {
+                final UserEmail email = new UserEmail(valid);
+                assertEquals(valid, email.value());
+            });
         }
     }
 }

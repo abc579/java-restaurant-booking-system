@@ -1,5 +1,6 @@
 package com.roccatagliatta.restaurant.User;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -34,9 +35,10 @@ final class UserIdTest {
         };
 
         for (final String valid : validUUIds) {
-            final UserId id = new UserId(valid);
-
-            assertEquals(valid, id.value().toString());
+            assertDoesNotThrow(() -> {
+                final UserId id = new UserId(valid);
+                assertEquals(valid, id.value().toString());
+            });
         }
     }
 }

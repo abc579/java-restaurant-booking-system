@@ -1,5 +1,6 @@
 package com.roccatagliatta.restaurant.User;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -26,9 +27,10 @@ final class UserPasswordTest {
                 "eightMinWithDigits8", "DontExceed32Chars", "DontPutWeirdChars1" };
 
         for (final String valid : validPasswords) {
-            final UserPassword validPassword = new UserPassword(valid);
-
-            assertEquals(valid, validPassword.value());
+            assertDoesNotThrow(() -> {
+                final UserPassword validPassword = new UserPassword(valid);
+                assertEquals(valid, validPassword.value());
+            });
         }
     }
 }

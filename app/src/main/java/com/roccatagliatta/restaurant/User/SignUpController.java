@@ -2,6 +2,7 @@ package com.roccatagliatta.restaurant.User;
 
 import java.util.UUID;
 
+import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserEmailException;
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserIdException;
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserNameException;
@@ -20,9 +21,12 @@ public final class SignUpController {
     @Autowired
     private SignUpUseCase useCase;
 
+    @Autowired
+    private PasswordEncryptor encryptor;
+
     @PostMapping("/user/signup")
     public ResponseEntity<?> signUp(@RequestBody SignUpRequest request) {
-        // @NOTE: with multiple languages this approach is not valid.
+        // @TODO: multiple languages.
         StringBuilder errors = new StringBuilder();
         UserId id = null;
         UserName name = null;
@@ -49,7 +53,7 @@ public final class SignUpController {
         }
 
         try {
-            password = new UserPassword(request.password());
+            password = new UserPassword(encryptor.encrypt(request.password()));
         } catch (final InvalidUserPasswordException ex) {
             errors.append("Password is not valid.\n");
         }
@@ -58,11 +62,25 @@ public final class SignUpController {
             return ResponseEntity.badRequest().body(errors.toString().trim());
         }
 
+        User user = new User(id, name, email, password, type);
+
         try {
-            useCase.run(id, name, email, password, type);
+            useCase.run(user);
         } catch (final SignUpUseCaseException ex) {
-            // @TODO
-            
+            switch (ex.errorCode) {
+                case SignUpUseCaseException.EMAIL_EXISTS:
+                    errors.append("Email already exists.");
+                    break;
+                case SignUpUseCaseException.INVALID_ENCRYPTED_PASSWORD:
+                    errors.append("Password encryption failed.");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (!errors.isEmpty()) {
+            return ResponseEntity.badRequest().body(errors.toString().trim());
         }
 
         return ResponseEntity.ok("Good request!");
