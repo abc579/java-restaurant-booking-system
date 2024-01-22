@@ -69,4 +69,5 @@ For all of these actions, the user has to be already logged in.
 
 ## TO DO
 
-- Implement login system.
+- 02:00 Implement login system.
+- 01:00 Investigate about spring-security --> make all end-points login-based except the signup one.

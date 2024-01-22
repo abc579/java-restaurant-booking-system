@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.User;
 
+import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserTypeException;
+
 public enum UserType {
     CUSTOMER(0),
     WAITER(1),
@@ -13,5 +15,15 @@ public enum UserType {
 
     public int value() {
         return value;
+    }
+
+    public static UserType valueOf(int value) throws InvalidUserTypeException {
+        for (UserType type : UserType.values()) {
+            if (type.value == value) {
+                return type;
+            }
+        }
+
+        throw new InvalidUserTypeException();
     }
 }

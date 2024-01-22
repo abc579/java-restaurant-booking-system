@@ -1,5 +1,6 @@
 package com.roccatagliatta.restaurant.User;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,50 +15,51 @@ public final class MySQLUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findByEmail(UserEmail email) {
-        User user = jdbcTemplate.query("select id, username, email, password, type from users where email = ?",
+        List<User> users = jdbcTemplate.query("select id, username, email, password, type from users where email = ?",
                 (rs, rowNum) -> {
                     try {
                         UserId id = new UserId(rs.getString("id"));
                         UserName name = new UserName(rs.getString("username"));
                         UserEmail emailDb = new UserEmail(rs.getString("email"));
-                        UserPassword password = new UserPassword(rs.getString("password"));
-                        UserType type = UserType.valueOf(rs.getString("type"));
+                        UserPassword password = UserPassword.fromEncrypted(rs.getString("password"));
+                        UserType type = UserType.valueOf(Integer.parseInt(rs.getString("type")));
                         return new User(id, name, emailDb, password, type);
                     } catch (final Exception ex) {
+                        System.out.println("FAILED MISERABLY -> " + ex.getMessage());
                         return null;
                     }
-                }, email).get(0);
+                }, email.value());
 
-        return Optional.of(user);
+        return users.isEmpty() ? Optional.empty() : Optional.ofNullable(users.get(0));
     }
 
     @Override
     public Optional<User> findById(UserId id) {
-        User user = jdbcTemplate.query("select id, username, email, password, type from users where id = ?",
+        List<User> users = jdbcTemplate.query("select id, username, email, password, type from users where id = ?",
                 (rs, rowNum) -> {
                     try {
                         UserId idDb = new UserId(rs.getString("id"));
                         UserName name = new UserName(rs.getString("username"));
                         UserEmail email = new UserEmail(rs.getString("email"));
-                        UserPassword password = new UserPassword(rs.getString("password"));
-                        UserType type = UserType.valueOf(rs.getString("type"));
+                        UserPassword password = UserPassword.fromEncrypted(rs.getString("password"));
+                        UserType type = UserType.valueOf(Integer.parseInt(rs.getString("type")));
                         return new User(idDb, name, email, password, type);
                     } catch (final Exception ex) {
                         return null;
                     }
-                }, id).get(0);
+                }, id.value());
 
-        return Optional.of(user);
+        return users == null ? Optional.empty() : Optional.of(users.get(0));
     }
 
     @Override
     public void save(User user) {
         jdbcTemplate.update("insert into users (id, username, email, password, type) values (?, ?, ?, ?, ?)",
-                user.id(),
-                user.username(),
-                user.email(),
-                user.password(),
-                user.type());
+                user.id().value().toString(),
+                user.username().value(),
+                user.email().value(),
+                user.password().value(),
+                user.type().value());
     }
 
 }

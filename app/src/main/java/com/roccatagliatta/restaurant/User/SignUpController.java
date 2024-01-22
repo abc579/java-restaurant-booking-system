@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.User;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
@@ -10,6 +12,7 @@ import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserPasswordExceptio
 import com.roccatagliatta.restaurant.User.Exceptions.SignUpUseCaseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,7 +56,7 @@ public final class SignUpController {
         }
 
         try {
-            password = new UserPassword(encryptor.encrypt(request.password()));
+            password = UserPassword.fromPlain(request.password(), encryptor);
         } catch (final InvalidUserPasswordException ex) {
             errors.append("Password is not valid.\n");
         }
@@ -83,7 +86,10 @@ public final class SignUpController {
             return ResponseEntity.badRequest().body(errors.toString().trim());
         }
 
-        return ResponseEntity.ok("Good request!");
+        Map<String, String> response = new HashMap<>();
+        response.put("id", user.id().value().toString());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
 }

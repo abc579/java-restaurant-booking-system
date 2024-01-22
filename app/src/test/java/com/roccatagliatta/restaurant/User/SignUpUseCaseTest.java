@@ -37,12 +37,12 @@ final class SignUpUseCaseTest {
 
     @Test
     void repository_is_called_when_customer_is_valid() {
-        Mockito.when(encryptor.encrypt(any())).thenReturn("haha123Loser");
+        // Mockito.when(encryptor.encrypt(any())).thenReturn("haha123Loser");
 
         try {
             UserId id = new UserId("0e6fae88-16c3-4a25-9a5e-0ef939804049");
             UserName name = new UserName("liwakura");
-            UserPassword password = new UserPassword(encryptor.encrypt("abc"));
+            UserPassword password = UserPassword.fromPlain("abc", encryptor);
             UserEmail email = new UserEmail("liwakura@test.com");
             User user = new User(id, name, email, password, UserType.CUSTOMER);
 
@@ -56,13 +56,13 @@ final class SignUpUseCaseTest {
 
     @Test
     void throws_exception_when_user_email_already_exists() {
-        Mockito.when(encryptor.encrypt(any())).thenReturn("haha123Loser");
+        // Mockito.when(encryptor.encrypt(any())).thenReturn("haha123Loser");
 
         try {
             User existingUser = new User(new UserId("0e6fae88-16c3-4a25-9a5e-0ef939804049"),
                     new UserName("liwakura"),
                     new UserEmail("liwakura@test.com"),
-                    new UserPassword(encryptor.encrypt("abc")),
+                    UserPassword.fromPlain("abc", encryptor),
                     UserType.CUSTOMER);
 
             Mockito.when(repository.findByEmail(any())).thenReturn(Optional.of(existingUser));
