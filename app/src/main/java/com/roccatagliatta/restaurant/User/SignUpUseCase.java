@@ -1,6 +1,7 @@
 package com.roccatagliatta.restaurant.User;
 
 import com.roccatagliatta.restaurant.User.Exceptions.SignUpUseCaseException;
+import com.roccatagliatta.restaurant.User.Persistence.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

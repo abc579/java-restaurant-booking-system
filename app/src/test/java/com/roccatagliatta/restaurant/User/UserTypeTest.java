@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserTypeException;
+import com.roccatagliatta.restaurant.User.Value.UserType;
 
 import org.junit.jupiter.api.Test;
 

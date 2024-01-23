@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserEmailException;
+import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserIdException;
+import com.roccatagliatta.restaurant.User.Value.UserId;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +21,8 @@ final class UserIdTest {
                 null };
 
         for (final String invalid : invalidUUIds) {
-            assertThrows(InvalidUserEmailException.class, () -> {
-                new UserEmail(invalid);
+            assertThrows(InvalidUserIdException.class, () -> {
+                new UserId(invalid);
             });
         }
     }

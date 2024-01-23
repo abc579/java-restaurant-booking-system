@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
+import com.roccatagliatta.restaurant.User.Value.UserPassword;
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserPasswordException;
 
 import org.junit.jupiter.api.Test;

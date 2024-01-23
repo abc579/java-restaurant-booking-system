@@ -1,8 +1,8 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Value;
 
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserNameException;
 
-final class UserName {
+public final class UserName {
 
     private String value;
     private static final String REGEX = "^[a-z]{2,32}$";

@@ -1,9 +1,9 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Value;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserPasswordException;
 
-final class UserPassword {
+public final class UserPassword {
     private String value;
     private static final String REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 

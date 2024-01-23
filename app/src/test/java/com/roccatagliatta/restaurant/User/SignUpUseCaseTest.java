@@ -8,8 +8,10 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 
+import com.roccatagliatta.restaurant.User.Persistence.UserRepository;
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
 import com.roccatagliatta.restaurant.User.Exceptions.SignUpUseCaseException;
+import com.roccatagliatta.restaurant.User.Value.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

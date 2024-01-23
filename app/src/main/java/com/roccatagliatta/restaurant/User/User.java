@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.User;
 
+import com.roccatagliatta.restaurant.User.Value.*;
+
 public final class User {
 
     private UserId id;

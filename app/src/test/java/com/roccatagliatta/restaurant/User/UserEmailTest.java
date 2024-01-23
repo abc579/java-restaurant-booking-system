@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserEmailException;
+import com.roccatagliatta.restaurant.User.Value.UserEmail;
 
 import org.junit.jupiter.api.Test;
 

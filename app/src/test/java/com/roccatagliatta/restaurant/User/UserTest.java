@@ -3,6 +3,7 @@ package com.roccatagliatta.restaurant.User;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
+import com.roccatagliatta.restaurant.User.Value.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

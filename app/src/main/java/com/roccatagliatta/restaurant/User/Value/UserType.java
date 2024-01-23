@@ -1,4 +1,4 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Value;
 
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserTypeException;
 

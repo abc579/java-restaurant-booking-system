@@ -1,4 +1,4 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Persistence;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import com.roccatagliatta.restaurant.User.Value.*;
+import com.roccatagliatta.restaurant.User.User;
 
 @Service
 public final class MySQLUserRepository implements UserRepository {
