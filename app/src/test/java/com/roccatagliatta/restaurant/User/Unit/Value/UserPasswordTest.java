@@ -1,4 +1,4 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Unit.Value;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -7,8 +7,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
-import com.roccatagliatta.restaurant.User.Value.UserPassword;
 import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserPasswordException;
+import com.roccatagliatta.restaurant.User.Value.UserPassword;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

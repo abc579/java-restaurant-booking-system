@@ -1,4 +1,4 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,6 +12,8 @@ import com.roccatagliatta.restaurant.User.Persistence.UserRepository;
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
 import com.roccatagliatta.restaurant.User.Exceptions.SignUpUseCaseException;
 import com.roccatagliatta.restaurant.User.Value.*;
+import com.roccatagliatta.restaurant.User.User;
+import com.roccatagliatta.restaurant.User.SignUpUseCase;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

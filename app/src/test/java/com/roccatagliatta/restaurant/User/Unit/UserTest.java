@@ -1,8 +1,9 @@
-package com.roccatagliatta.restaurant.User;
+package com.roccatagliatta.restaurant.User.Unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
+import com.roccatagliatta.restaurant.User.User;
 import com.roccatagliatta.restaurant.User.Value.*;
 
 import org.junit.jupiter.api.Test;
