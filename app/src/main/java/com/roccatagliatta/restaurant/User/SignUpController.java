@@ -73,7 +73,8 @@ public final class SignUpController {
         } catch (final SignUpUseCaseException ex) {
             switch (ex.errorCode) {
                 case SignUpUseCaseException.EMAIL_EXISTS:
-                    errors.append("Email already exists.");
+                    // Non-exploitable return message.
+                    errors.append("Username or email already exists.");
                     break;
                 case SignUpUseCaseException.INVALID_ENCRYPTED_PASSWORD:
                     errors.append("Password encryption failed.");
