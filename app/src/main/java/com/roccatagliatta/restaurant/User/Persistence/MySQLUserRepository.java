@@ -27,10 +27,29 @@ public final class MySQLUserRepository implements UserRepository {
                         UserType type = UserType.valueOf(Integer.parseInt(rs.getString("type")));
                         return new User(id, name, emailDb, password, type);
                     } catch (final Exception ex) {
-                        System.out.println("FAILED MISERABLY -> " + ex.getMessage());
                         return null;
                     }
                 }, email.value());
+
+        return users.isEmpty() ? Optional.empty() : Optional.ofNullable(users.get(0));
+    }
+
+    @Override
+    public Optional<User> findByUsername(UserName name) {
+        List<User> users = jdbcTemplate.query(
+                "select id, username, email, password, type from users where username = ?",
+                (rs, rowNum) -> {
+                    try {
+                        UserId id = new UserId(rs.getString("id"));
+                        UserName nameDb = new UserName(rs.getString("username"));
+                        UserEmail email = new UserEmail(rs.getString("email"));
+                        UserPassword password = UserPassword.fromEncrypted(rs.getString("password"));
+                        UserType type = UserType.valueOf(Integer.parseInt(rs.getString("type")));
+                        return new User(id, nameDb, email, password, type);
+                    } catch (final Exception ex) {
+                        return null;
+                    }
+                }, name.value());
 
         return users.isEmpty() ? Optional.empty() : Optional.ofNullable(users.get(0));
     }
@@ -49,7 +68,7 @@ public final class MySQLUserRepository implements UserRepository {
                     } catch (final Exception ex) {
                         return null;
                     }
-                }, id.value());
+                }, id.value().toString());
 
         return users == null ? Optional.empty() : Optional.of(users.get(0));
     }

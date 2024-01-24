@@ -24,4 +24,15 @@ public final class UserId {
     public UUID value() {
         return value;
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        UserId userId = (UserId) object;
+        return java.util.Objects.equals(value, userId.value);
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), value);
+    }
 }

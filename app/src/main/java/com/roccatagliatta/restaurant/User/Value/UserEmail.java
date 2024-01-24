@@ -17,4 +17,15 @@ public final class UserEmail {
     public String value() {
         return value;
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        UserEmail userEmail = (UserEmail) object;
+        return java.util.Objects.equals(value, userEmail.value);
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), value);
+    }
 }

@@ -18,4 +18,15 @@ public final class UserName {
     public String value() {
         return value;
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        UserName userName = (UserName) object;
+        return java.util.Objects.equals(value, userName.value);
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), value);
+    }
 }

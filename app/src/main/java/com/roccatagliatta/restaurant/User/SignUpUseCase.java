@@ -17,6 +17,10 @@ public final class SignUpUseCase {
             throw SignUpUseCaseException.emailExists();
         }
 
+        if (userRepository.findByUsername(user.username()).isPresent()) {
+            throw SignUpUseCaseException.usernameExists();
+        }
+
         userRepository.save(user);
     }
 }

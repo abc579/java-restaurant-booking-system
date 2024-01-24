@@ -75,7 +75,7 @@ final class SignUpUseCaseTest {
                 useCase.run(existingUser);
             });
 
-            assertEquals(ex.errorCode, SignUpUseCaseException.EMAIL_EXISTS);
+            assertEquals(SignUpUseCaseException.EMAIL_EXISTS, ex.errorCode);
         } catch (final Exception ex) {
 
         }

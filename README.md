@@ -69,5 +69,4 @@ For all of these actions, the user has to be already logged in.
 
 ## TO DO
 
-- 02:00 Implement integration tests for login.
-- 01:00 Investigate about spring-security --> make all end-points login-based except the signup one.
+- 01:00 Investigate about spring-security --> make all end-points login-based except the signup one. JWT.

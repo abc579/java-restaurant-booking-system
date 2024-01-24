@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.User;
 
+import java.util.Objects;
+
 import com.roccatagliatta.restaurant.User.Value.*;
 
 public final class User {
@@ -15,10 +17,10 @@ public final class User {
     private UserType type;
 
     public User(UserId id,
-                UserName username,
-                UserEmail email,
-                UserPassword password,
-                UserType type) {
+            UserName username,
+            UserEmail email,
+            UserPassword password,
+            UserType type) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -44,5 +46,25 @@ public final class User {
 
     public UserType type() {
         return type;
+    }
+
+    public boolean equals(Object object) {
+        System.out.println("WHat is wrong with you, Object -> " + object.getClass());
+
+        if (this == object)
+            return true;
+
+        if (object == null || getClass() != object.getClass())
+            return false;
+
+        User user = (User) object;
+
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username)
+                && Objects.equals(password, user.password) && Objects.equals(email, user.email)
+                && Objects.equals(type, user.type);
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id, username, password, email, type);
     }
 }
