@@ -30,7 +30,6 @@ public final class SignUpController {
 
     @PostMapping("/user/signup")
     public ResponseEntity<?> signUp(@RequestBody SignUpRequest request) {
-        // @TODO: multiple languages.
         StringBuilder errors = new StringBuilder();
         UserId id = null;
         UserName name = null;

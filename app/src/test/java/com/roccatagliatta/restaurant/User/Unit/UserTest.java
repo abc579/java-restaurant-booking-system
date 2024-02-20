@@ -1,18 +1,27 @@
 package com.roccatagliatta.restaurant.User.Unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
 import com.roccatagliatta.restaurant.User.User;
 import com.roccatagliatta.restaurant.User.Value.*;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 final class UserTest {
 
-    @Autowired
+    @Mock
     private PasswordEncryptor encryptor;
+
+    public void setup() {
+        encryptor = Mockito.mock(PasswordEncryptor.class);
+    }
 
     @Test
     void user_is_created_when_user_is_valid() {
@@ -29,7 +38,7 @@ final class UserTest {
             assertEquals(email.value(), validUser.email().value());
             assertEquals(type.value(), validUser.type().value());
         } catch (final Exception ex) {
-            // Unreachable.
+            assertTrue(false);
         }
     }
 

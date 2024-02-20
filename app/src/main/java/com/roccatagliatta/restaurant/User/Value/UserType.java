@@ -9,7 +9,7 @@ public enum UserType {
 
     private final int value;
 
-    private UserType(int value) {
+    private UserType(final int value) {
         this.value = value;
     }
 
@@ -17,7 +17,7 @@ public enum UserType {
         return value;
     }
 
-    public static UserType valueOf(int value) throws InvalidUserTypeException {
+    public static UserType valueOf(final int value) throws InvalidUserTypeException {
         for (UserType type : UserType.values()) {
             if (type.value == value) {
                 return type;
@@ -25,5 +25,14 @@ public enum UserType {
         }
 
         throw new InvalidUserTypeException();
+    }
+
+    public static boolean exists(final String type) {
+        try {
+            UserType exists = UserType.valueOf(type);
+            return exists != null;
+        } catch (final IllegalArgumentException ex) {
+            return false;
+        }
     }
 }
