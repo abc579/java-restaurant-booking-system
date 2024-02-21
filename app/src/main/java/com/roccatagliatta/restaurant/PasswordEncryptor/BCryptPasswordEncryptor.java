@@ -1,13 +1,10 @@
 package com.roccatagliatta.restaurant.PasswordEncryptor;
 
-import java.nio.charset.StandardCharsets;
-
-import com.google.common.hash.Hashing;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public final class Sha256PasswordEncryptor implements PasswordEncryptor {
+public final class BCryptPasswordEncryptor implements PasswordEncryptor {
 
     @Override
     public boolean compare(String plainPassword, String encrypted) {
@@ -18,7 +15,9 @@ public final class Sha256PasswordEncryptor implements PasswordEncryptor {
 
     @Override
     public String encrypt(String plain) {
-        return Hashing.sha256().hashString(plain, StandardCharsets.UTF_8).toString();
+        final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        return encoder.encode(plain).toString();
     }
 
 }

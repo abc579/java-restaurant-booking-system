@@ -8,7 +8,7 @@ public final class SignUpUseCaseException extends Exception {
     public static final int INVALID_ENCRYPTED_PASSWORD = 1;
     public static final int USERNAME_EXISTS = 2;
 
-    public SignUpUseCaseException(int errorCode) {
+    private SignUpUseCaseException(int errorCode) {
         this.errorCode = errorCode;
     }
 

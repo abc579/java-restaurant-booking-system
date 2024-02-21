@@ -69,6 +69,4 @@ For all of these actions, the user has to be already logged in.
 
 ## TO DO
 
-- Create a new use case called SignInUseCase where everything related to JWT is done there. After that, every end-point
-  that requires login should execute that use case first. This use case should throw an error if the login wasn't successful.
-  Test the fuck out of that.
+- SignIn works and returns the jwt token, however, I cannot access privileged resources yet. Investigate.
