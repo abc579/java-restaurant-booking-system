@@ -20,6 +20,8 @@ services:
       DATABASE_USER: "roccatagliatta"
       DATABASE_PASSWORD: "secret"
       DATABASE_DRIVER: "com.mysql.cj.jdbc.Driver"
+    env_file:
+      - .env
     networks:
       default:
   mysql:
