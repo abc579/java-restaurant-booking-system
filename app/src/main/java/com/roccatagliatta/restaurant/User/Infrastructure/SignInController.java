@@ -1,19 +1,17 @@
 package com.roccatagliatta.restaurant.User.Infrastructure;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.common.net.HttpHeaders;
+
 import com.roccatagliatta.restaurant.Security.JwtUtils;
-import com.roccatagliatta.restaurant.Security.UserDetailsImpl;
+import com.roccatagliatta.restaurant.User.Application.UseCase.SignInUseCase;
+import com.roccatagliatta.restaurant.User.Application.UseCase.Exception.SignInUseCaseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,31 +20,34 @@ import org.springframework.web.bind.annotation.RestController;
 public final class SignInController {
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;
 
     @PostMapping("/user/signin")
-    public ResponseEntity<?> signIn(@RequestBody SignInRequest request) {
-        Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(request.username(),
-                        request.password()));
+    public ResponseEntity<?> signIn(@RequestBody SignInRequest request) throws SignInUseCaseException {
+        Map<String, Object> response = new HashMap<>();
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            SignInUseCase useCase = new SignInUseCase(authenticationManager, jwtUtils);
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+            useCase.run(request, response);
 
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+            // XXX: nasty hack, not good.
+            String jwtCookie = (String) response.get("jwtCookie");
+            response.remove("jwtCookie");
 
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
-                .collect(Collectors.toList());
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie).body(response);
+        } catch (final SignInUseCaseException ex) {
+            switch (ex.errorCode) {
+                case SignInUseCaseException.BAD_CREDENTIALS:
+                    response.put("message", "Bad Credentials");
+                    break;
+            }
 
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(new SignInResponse(userDetails.getId(),
-                        userDetails.getUsername(),
-                        userDetails.getEmail(),
-                        roles));
+            return ResponseEntity.ok().body(response);
+        }
+
     }
 }
