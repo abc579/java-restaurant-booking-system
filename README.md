@@ -69,4 +69,6 @@ For all of these actions, the user has to be already logged in.
 
 ## TO DO
 
-- SignIn works and returns the jwt token, however, I cannot access privileged resources yet. Investigate.
+- Implement SignOut.
+- Create tests for these use cases.
+- Refactor as we go.
