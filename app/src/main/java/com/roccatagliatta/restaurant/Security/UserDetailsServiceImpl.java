@@ -2,10 +2,10 @@ package com.roccatagliatta.restaurant.Security;
 
 import java.util.Optional;
 
-import com.roccatagliatta.restaurant.User.User;
-import com.roccatagliatta.restaurant.User.Exceptions.InvalidUserNameException;
-import com.roccatagliatta.restaurant.User.Persistence.UserRepository;
-import com.roccatagliatta.restaurant.User.Value.UserName;
+import com.roccatagliatta.restaurant.User.Domain.User;
+import com.roccatagliatta.restaurant.User.Domain.Exception.InvalidUserNameException;
+import com.roccatagliatta.restaurant.User.Domain.Persistence.UserRepository;
+import com.roccatagliatta.restaurant.User.Domain.Value.UserName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

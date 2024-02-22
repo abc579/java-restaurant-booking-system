@@ -2,14 +2,13 @@ package com.roccatagliatta.restaurant.User.Integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
-import com.roccatagliatta.restaurant.User.Value.*;
-import com.roccatagliatta.restaurant.User.User;
-import com.roccatagliatta.restaurant.User.Exceptions.SignUpUseCaseException;
-import com.roccatagliatta.restaurant.User.Persistence.UserRepository;
-import com.roccatagliatta.restaurant.User.SignUpUseCase;
+import com.roccatagliatta.restaurant.User.Domain.Value.*;
+import com.roccatagliatta.restaurant.User.Domain.User;
+import com.roccatagliatta.restaurant.User.Application.UseCase.Exception.SignUpUseCaseException;
+import com.roccatagliatta.restaurant.User.Domain.Persistence.UserRepository;
+import com.roccatagliatta.restaurant.User.Application.UseCase.SignUpUseCase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.roccatagliatta.restaurant.User.User;
+import com.roccatagliatta.restaurant.User.Domain.User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
