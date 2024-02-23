@@ -20,26 +20,26 @@ public final class ShowMenuController {
 
     @GetMapping("/menu/show")
     public ResponseEntity<?> show(@RequestBody final ShowMenuRequest req) {
-        Map<String, Object> response = new HashMap<>();
+        Map<String, Object> res = new HashMap<>();
 
         try {
-            useCase.run(req);
+            useCase.run(req, res);
 
-            return ResponseEntity.ok().body(response);
+            return ResponseEntity.ok().body(res);
         } catch (final ShowMenuUseCaseException ex) {
             switch (ex.errorCode) {
                 case ShowMenuUseCaseException.INVALID_YEAR:
-                    response.put("error", "Invalid year.");
+                    res.put("error", "Invalid year.");
                     break;
                 case ShowMenuUseCaseException.INVALID_MONTH:
-                    response.put("error", "Invalid month.");
+                    res.put("error", "Invalid month.");
                     break;
                 case ShowMenuUseCaseException.INVALID_WEEK:
-                    response.put("error", "Invalid week.");
+                    res.put("error", "Invalid week.");
                     break;
             }
 
-            return ResponseEntity.badRequest().body(response);
+            return ResponseEntity.badRequest().body(res);
         }
     }
 }
