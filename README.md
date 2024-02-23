@@ -69,6 +69,8 @@ For all of these actions, the user has to be already logged in.
 
 ## TO DO
 
-- Do Unit and Integration tests of them.
-- Continue with the rest of the application... we'll leave functional tests for the end.
-- Handle cases where the json input is wrong in controllers.
+- Continue with application.
+
+- Handle cases where the json input is wrong in controllers. (LATER)
+- Do Unit and Integration tests of them. (LATER)
+- Functional tests. (LATER)
