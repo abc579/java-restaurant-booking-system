@@ -29,7 +29,11 @@ The Roccatagliatta Reservation System includes the following features:
 - *Virtualization*: Docker
 
 ** Getting Started
-TODO
+We need to create a .env file with the following variables defined:
+
+- JWT_SECRET
+- JWT_EXPIRATION_DATE
+- JWT_COOKIE_NAME
 
 ** Actions
 For all of these actions, the user has to be already logged in.
