@@ -1,5 +1,5 @@
 package com.roccatagliatta.restaurant.Menu.Domain.Value.Exception;
 
-public final class MenuItemNameException extends Exception {
+public final class InvalidMenuItemPrice extends Exception {
 
 }

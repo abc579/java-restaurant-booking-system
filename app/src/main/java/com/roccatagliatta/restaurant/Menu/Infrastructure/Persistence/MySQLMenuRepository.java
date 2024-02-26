@@ -34,7 +34,7 @@ public final class MySQLMenuRepository implements MenuRepository {
         List<Menu> menu = jdbcTemplate.query("select id, year, month, week from menus where year = ? and month = ? and week = ?",
                 (rs, rowNum) -> {
                     try {
-                        final MenuId id = new MenuId(UUID.fromString(rs.getString("id")));
+                        final MenuId id = new MenuId(rs.getString("id"));
                         return new Menu(id, year, month, week);
                     } catch (final Exception ex) {
                         return null;
@@ -48,11 +48,11 @@ public final class MySQLMenuRepository implements MenuRepository {
         List<MenuItem> menuItems = jdbcTemplate.query("select id, name, description, category, price from menu_items where menu_id = ?",
                 (rs, rowNum) -> {
                     try {
-                        final MenuItemId id = new MenuItemId(UUID.fromString(rs.getString("id")));
+                        final MenuItemId id = new MenuItemId(rs.getString("id"));
                         final MenuItemName name = new MenuItemName(rs.getString("name"));
                         final MenuItemDescription description = new MenuItemDescription(rs.getString("description"));
                         final MenuItemCategory category = MenuItemCategory.valueOf(Integer.parseInt(rs.getString("category")));
-                        final MenuItemPrice price = new MenuItemPrice(new BigDecimal(rs.getString("price")));
+                        final MenuItemPrice price = new MenuItemPrice(rs.getString("price"));
 
                         return new MenuItem(id, name, description, category, price);
                     } catch (final Exception ex) {

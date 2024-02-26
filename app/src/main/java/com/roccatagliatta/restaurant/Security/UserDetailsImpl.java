@@ -37,12 +37,11 @@ public final class UserDetailsImpl implements UserDetails {
     public static UserDetailsImpl build(User user) {
         GrantedAuthority authority = new SimpleGrantedAuthority(user.type().toString());
 
-        return new UserDetailsImpl(
-                user.id().value(),
-                user.username().value(),
-                user.email().value(),
-                user.password().value(),
-                authority);
+        return new UserDetailsImpl(user.id().value().value(),
+                                   user.username().value(),
+                                   user.email().value(),
+                                   user.password().value(),
+                                   authority);
     }
 
     @Override

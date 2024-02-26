@@ -26,13 +26,4 @@ public enum UserType {
 
         throw new InvalidUserTypeException();
     }
-
-    public static boolean exists(final String type) {
-        try {
-            UserType exists = UserType.valueOf(type);
-            return exists != null;
-        } catch (final IllegalArgumentException ex) {
-            return false;
-        }
-    }
 }

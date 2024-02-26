@@ -15,7 +15,7 @@ public enum MenuItemCategory {
     }
 
     public static MenuItemCategory valueOf(final int value) throws InvalidMenuItemCategoryException {
-        for (MenuItemCategory category : MenuItemCategory.values()) {
+        for (final MenuItemCategory category : MenuItemCategory.values()) {
             if (category.value == value) {
                 return category;
             }
@@ -24,12 +24,7 @@ public enum MenuItemCategory {
         throw new InvalidMenuItemCategoryException();
     }
 
-    public static boolean exists(final String category) {
-        try {
-            MenuItemCategory exists = MenuItemCategory.valueOf(category);
-            return exists != null;
-        } catch (final IllegalArgumentException ex) {
-            return false;
-        }
+    public int value() {
+        return value;
     }
 }

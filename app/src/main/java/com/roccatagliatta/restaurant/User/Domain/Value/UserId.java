@@ -1,27 +1,21 @@
 package com.roccatagliatta.restaurant.User.Domain.Value;
 
-import java.util.UUID;
 import com.roccatagliatta.restaurant.User.Domain.Exception.InvalidUserIdException;
+import com.roccatagliatta.restaurant.Shared.Domain.RestaurantId;
+import com.roccatagliatta.restaurant.Shared.Domain.Exception.InvalidRestaurantIdException;
 
 public final class UserId {
-    private UUID value;
-    private static final String REGEX = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
+    private RestaurantId value;
 
     public UserId(String id) throws InvalidUserIdException {
-        // We'll validate this ourselves because Java's fromString method from the UUID
-        // class sucks.
-        if (id == null || !id.matches(REGEX)) {
-            throw new InvalidUserIdException();
-        }
-
         try {
-            this.value = UUID.fromString(id);
-        } catch (final IllegalArgumentException e) {
+            this.value = new RestaurantId(id);
+        } catch (final InvalidRestaurantIdException ex) {
             throw new InvalidUserIdException();
         }
     }
 
-    public UUID value() {
+    public RestaurantId value() {
         return value;
     }
 
@@ -34,5 +28,10 @@ public final class UserId {
 
     public int hashCode() {
         return java.util.Objects.hash(super.hashCode(), value);
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }

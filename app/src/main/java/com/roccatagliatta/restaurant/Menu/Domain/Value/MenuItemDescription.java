@@ -1,14 +1,14 @@
 package com.roccatagliatta.restaurant.Menu.Domain.Value;
 
-import com.roccatagliatta.restaurant.Menu.Domain.Value.Exception.MenuItemDescriptionException;
+import com.roccatagliatta.restaurant.Menu.Domain.Value.Exception.InvalidMenuItemDescription;
 
 public final class MenuItemDescription {
 
     private String value;
 
-    public MenuItemDescription(String description) throws MenuItemDescriptionException {
+    public MenuItemDescription(String description) throws InvalidMenuItemDescription {
         if (description == null || description.isEmpty() || description.length() > 255) {
-            throw new MenuItemDescriptionException();
+            throw new InvalidMenuItemDescription();
         }
 
         this.value = description;

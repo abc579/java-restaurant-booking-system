@@ -23,23 +23,9 @@ final class UserTypeTest {
 
     @Test
     void creates_user_type_with_valid_data() throws InvalidUserTypeException {
-        final String invalidType = "0";
-        final UserType type = UserType.valueOf(Integer.valueOf(invalidType));
+        final String valid = "0";
+        final UserType type = UserType.valueOf(Integer.valueOf(valid));
 
         assertEquals(type, UserType.CUSTOMER);
-    }
-
-    @Test
-    void user_type_method_exists_returns_true_when_type_exists() {
-        assertTrue(UserType.exists("CUSTOMER"));
-        assertTrue(UserType.exists("WAITER"));
-        assertTrue(UserType.exists("MANAGER"));
-    }
-
-    @Test
-    void user_type_method_exists_returns_false_when_type_does_not_exists() {
-        assertFalse(UserType.exists("CUSTOMER1"));
-        assertFalse(UserType.exists("WAITER1"));
-        assertFalse(UserType.exists("MANAGER1"));
     }
 }
