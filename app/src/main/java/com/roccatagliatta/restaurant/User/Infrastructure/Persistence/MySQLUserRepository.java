@@ -23,10 +23,9 @@ public final class MySQLUserRepository implements UserRepository {
                     try {
                         UserId id = new UserId(rs.getString("id"));
                         UserName name = new UserName(rs.getString("username"));
-                        UserEmail emailDb = new UserEmail(rs.getString("email"));
                         UserPassword password = UserPassword.fromEncrypted(rs.getString("password"));
                         UserType type = UserType.valueOf(Integer.parseInt(rs.getString("type")));
-                        return new User(id, name, emailDb, password, type);
+                        return new User(id, name, email, password, type);
                     } catch (final Exception ex) {
                         return null;
                     }

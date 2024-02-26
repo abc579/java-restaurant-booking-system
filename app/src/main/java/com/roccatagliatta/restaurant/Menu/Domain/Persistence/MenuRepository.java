@@ -9,6 +9,6 @@ import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuYear;
 
 public interface MenuRepository {
 
-    public Optional<Menu> find(MenuYear year, MenuMonth month, MenuWeek week);
+    public Optional<Menu> find(final MenuYear year, final MenuMonth month, final MenuWeek week);
 
 }

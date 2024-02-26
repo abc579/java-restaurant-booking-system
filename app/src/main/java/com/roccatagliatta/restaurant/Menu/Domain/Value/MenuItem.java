@@ -5,10 +5,38 @@ import java.util.UUID;
 
 public final class MenuItem {
 
-    private UUID id;
-    private String name;
-    private String description;
+    private MenuItemId id;
+    private MenuItemName name;
+    private MenuItemDescription description;
     private MenuItemCategory category;
-    private BigDecimal price;
+    private MenuItemPrice price;
 
+    public MenuItem(MenuItemId id, MenuItemName name, MenuItemDescription description,
+                    MenuItemCategory category, MenuItemPrice price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.price = price;
+    }
+
+    public MenuItemId id() {
+        return id;
+    }
+
+    public MenuItemName name() {
+        return name;
+    }
+
+    public MenuItemDescription description() {
+        return description;
+    }
+
+    public MenuItemCategory category() {
+        return category;
+    }
+
+    public MenuItemPrice price() {
+        return price;
+    }
 }
