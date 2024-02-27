@@ -21,4 +21,9 @@ public final class MenuItemId {
     public RestaurantId value() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value.toString();
+    }
 }

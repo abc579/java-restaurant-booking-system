@@ -24,7 +24,7 @@ final class UserTest {
     }
 
     @Test
-    void user_is_created_when_user_is_valid() {
+    void user_is_created_when_user_is_valid_and_returns_correct_values() {
         try {
             UserId id = new UserId("4e910d63-a2bd-4e53-92cc-282a04203588");
             UserName name = new UserName("liwakura");

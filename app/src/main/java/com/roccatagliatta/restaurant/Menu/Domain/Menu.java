@@ -34,4 +34,8 @@ public final class Menu {
     public void setMenuItems(final List<MenuItem> items) {
         this.items = items;
     }
+
+    public MenuDate date() {
+        return date;
+    }
 }
