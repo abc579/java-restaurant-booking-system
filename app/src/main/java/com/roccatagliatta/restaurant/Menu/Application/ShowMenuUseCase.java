@@ -23,7 +23,7 @@ public final class ShowMenuUseCase {
         try {
             final MenuDate date = new MenuDate(req.year(), req.month(), req.week());
 
-            Optional<Menu> menu = repository.find(date);
+            final Optional<Menu> menu = repository.find(date);
 
             res.put("menu", menu.isPresent() ? menu.get() : null);
         } catch (final InvalidMenuDate ex) {

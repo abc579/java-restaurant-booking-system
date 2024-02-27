@@ -399,7 +399,7 @@ final class SignUpUseCaseTest 26,1041
     private SignUpUseCase useCase;35,1193
     public void setup(37,1229
     void repository_is_called_when_customer_is_valid(43,1388
-    void throws_exception_when_user_email_already_exists(60,1977
+    void throws_exception_when_user_email_already_exists(58,1997
 
 app/src/test/java/com/roccatagliatta/restaurant/User/Unit/Application/SignInUseCaseTest.java,43
 public final class SignInUseCaseTest 3,62
@@ -445,6 +445,16 @@ final class SignUpUseCaseTest 20,874
     void exception_is_thrown_when_user_email_already_exists_in_database(32,1080
     void exception_is_thrown_when_username_already_exists_in_database(52,1895
     void user_is_created_and_database_returns_data_successfully(72,2720
+
+app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Application/ShowMenuUseCaseTest.java,407
+public final class ShowMenuUseCaseTest 39,1762
+    private MenuRepository repository;42,1814
+    private ShowMenuUseCase useCase;45,1871
+    public void setup(47,1909
+    void ensure_repository_find_method_is_called_once(52,2009
+    void exception_is_thrown_with_invalid_date(62,2339
+    void empty_menu_is_returned_when_no_data_is_found(74,2747
+    void menu_is_returned_when_data_is_found(86,3126
 
 app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Domain/MenuTest.java,112
 public final class MenuTest 23,899

@@ -40,40 +40,36 @@ final class SignUpUseCaseTest {
     }
 
     @Test
-    void repository_is_called_when_customer_is_valid() {
-        try {
-            UserId id = new UserId("0e6fae88-16c3-4a25-9a5e-0ef939804049");
-            UserName name = new UserName("liwakura");
-            UserPassword password = UserPassword.fromPlain("abc", encryptor);
-            UserEmail email = new UserEmail("liwakura@test.com");
-            User user = new User(id, name, email, password, UserType.CUSTOMER);
+    void repository_is_called_when_customer_is_valid() throws Exception {
+        Mockito.when(encryptor.encrypt(any(String.class))).thenReturn("asdsada");
 
-            useCase.run(user);
+        UserId id = new UserId("0e6fae88-16c3-4a25-9a5e-0ef939804049");
+        UserName name = new UserName("liwakura");
+        UserPassword password = UserPassword.fromPlain("eightMinDigits8", encryptor);
+        UserEmail email = new UserEmail("liwakura@test.com");
+        User user = new User(id, name, email, password, UserType.CUSTOMER);
 
-            verify(repository, times(1)).save(any(User.class));
-        } catch (final Exception ex) {
+        useCase.run(user);
 
-        }
+        verify(repository, times(1)).save(any(User.class));
     }
 
     @Test
-    void throws_exception_when_user_email_already_exists() {
-        try {
-            User existingUser = new User(new UserId("0e6fae88-16c3-4a25-9a5e-0ef939804049"),
-                    new UserName("liwakura"),
-                    new UserEmail("liwakura@test.com"),
-                    UserPassword.fromPlain("abc", encryptor),
-                    UserType.CUSTOMER);
+    void throws_exception_when_user_email_already_exists() throws Exception {
+        Mockito.when(encryptor.encrypt(any(String.class))).thenReturn("asdsada");
 
-            Mockito.when(repository.findByEmail(any())).thenReturn(Optional.of(existingUser));
+        User existingUser = new User(new UserId("0e6fae88-16c3-4a25-9a5e-0ef939804049"),
+                                     new UserName("liwakura"),
+                                     new UserEmail("liwakura@test.com"),
+                                     UserPassword.fromPlain("eightMinDigits8", encryptor),
+                                     UserType.CUSTOMER);
 
-            SignUpUseCaseException ex = assertThrows(SignUpUseCaseException.class, () -> {
+        Mockito.when(repository.findByEmail(any())).thenReturn(Optional.of(existingUser));
+
+        SignUpUseCaseException ex = assertThrows(SignUpUseCaseException.class, () -> {
                 useCase.run(existingUser);
-            });
+        });
 
-            assertEquals(SignUpUseCaseException.EMAIL_EXISTS, ex.errorCode);
-        } catch (final Exception ex) {
-
-        }
+        assertEquals(SignUpUseCaseException.EMAIL_EXISTS, ex.errorCode);
     }
 }

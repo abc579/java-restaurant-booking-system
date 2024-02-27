@@ -62,7 +62,7 @@ For all of these actions, the user has to be already logged in.
 1. As an admin, I additionally want the option of "promote" a waitress to manager and viceversa.
 
 * TO DO
-- Continue with application --> MenuMonth tests til MenuYear, then usecase tests (integration), then some tests with postman
+- Integration tests for ShowMenuUseCase
 
 - Handle cases where the json input is wrong in controllers. (LATER)
 - Do Unit and Integration tests of them. (LATER)
