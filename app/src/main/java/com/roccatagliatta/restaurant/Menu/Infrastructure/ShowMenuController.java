@@ -28,14 +28,8 @@ public final class ShowMenuController {
             return ResponseEntity.ok().body(res);
         } catch (final ShowMenuUseCaseException ex) {
             switch (ex.errorCode) {
-                case ShowMenuUseCaseException.INVALID_YEAR:
-                    res.put("error", "Invalid year.");
-                    break;
-                case ShowMenuUseCaseException.INVALID_MONTH:
-                    res.put("error", "Invalid month.");
-                    break;
-                case ShowMenuUseCaseException.INVALID_WEEK:
-                    res.put("error", "Invalid week.");
+                case ShowMenuUseCaseException.INVALID_DATE:
+                    res.put("error", "Invalid date.");
                     break;
             }
 

@@ -6,6 +6,7 @@ import java.util.UUID;
 import java.math.BigDecimal;
 
 import com.roccatagliatta.restaurant.Menu.Domain.Menu;
+import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuDate;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuId;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItem;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemId;
@@ -14,9 +15,6 @@ import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemDescription;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemCategory;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemPrice;
 import com.roccatagliatta.restaurant.Menu.Domain.Persistence.MenuRepository;
-import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuMonth;
-import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuWeek;
-import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuYear;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,17 +27,17 @@ public final class MySQLMenuRepository implements MenuRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Optional<Menu> find(final MenuYear year, final MenuMonth month, final MenuWeek week) {
+    public Optional<Menu> find(final MenuDate date) {
         // @NOTE: This will return a single value!
         List<Menu> menu = jdbcTemplate.query("select id, year, month, week from menus where year = ? and month = ? and week = ?",
                 (rs, rowNum) -> {
                     try {
                         final MenuId id = new MenuId(rs.getString("id"));
-                        return new Menu(id, year, month, week);
+                        return new Menu(id, date);
                     } catch (final Exception ex) {
                         return null;
                     }
-                }, year.value(), month.value(), week.value());
+                }, date.year(), date.month(), date.week());
 
         if (menu.isEmpty()) {
             return Optional.empty();
