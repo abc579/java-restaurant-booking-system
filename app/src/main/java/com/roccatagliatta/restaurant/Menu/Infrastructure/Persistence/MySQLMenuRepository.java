@@ -29,7 +29,7 @@ public final class MySQLMenuRepository implements MenuRepository {
     @Override
     public Optional<Menu> find(final MenuDate date) {
         // @NOTE: This will return a single value!
-        List<Menu> menu = jdbcTemplate.query("select id, year, month, week from menus where year = ? and month = ? and week = ?",
+        List<Menu> menu = jdbcTemplate.query("select id from menus where year = ? and month = ? and day = ?",
                 (rs, rowNum) -> {
                     try {
                         final MenuId id = new MenuId(rs.getString("id"));
@@ -37,7 +37,7 @@ public final class MySQLMenuRepository implements MenuRepository {
                     } catch (final Exception ex) {
                         return null;
                     }
-                }, date.year(), date.month(), date.week());
+                }, date.year(), date.month(), date.day());
 
         if (menu.isEmpty()) {
             return Optional.empty();
@@ -56,7 +56,7 @@ public final class MySQLMenuRepository implements MenuRepository {
                     } catch (final Exception ex) {
                         return null;
                     }
-                }, menu.get(0).id().value());
+                }, menu.get(0).id().value().toString());
 
         menu.get(0).setMenuItems(menuItems);
 

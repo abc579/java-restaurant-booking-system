@@ -21,7 +21,7 @@ public final class ShowMenuUseCase {
 
     public void run(final ShowMenuRequest req, Map<String, Object> res) throws ShowMenuUseCaseException {
         try {
-            final MenuDate date = new MenuDate(req.year(), req.month(), req.week());
+            final MenuDate date = new MenuDate(req.year(), req.month(), req.day());
 
             final Optional<Menu> menu = repository.find(date);
 

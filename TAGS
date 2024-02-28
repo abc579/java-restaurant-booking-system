@@ -252,15 +252,15 @@ public final class MenuItemId 9,323
     public RestaurantId value(21,634
     public String toString(26,711
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuDate.java,280
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuDate.java,279
 public final class MenuDate 8,205
     private static final int RESTAURANT_OPEN_YEAR 10,236
     private Calendar value;11,294
     public MenuDate(13,323
-    public int year(32,1140
-    public int month(36,1212
-    public int week(40,1286
-    public String toString(44,1367
+    public int year(31,1085
+    public int month(35,1157
+    public int day(39,1231
+    public String toString(43,1310
 
 app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemDescription.java,148
 public final class MenuItemDescription 5,152
@@ -447,14 +447,14 @@ final class SignUpUseCaseTest 20,874
     void user_is_created_and_database_returns_data_successfully(72,2720
 
 app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Application/ShowMenuUseCaseTest.java,407
-public final class ShowMenuUseCaseTest 39,1762
-    private MenuRepository repository;42,1814
-    private ShowMenuUseCase useCase;45,1871
-    public void setup(47,1909
-    void ensure_repository_find_method_is_called_once(52,2009
-    void exception_is_thrown_with_invalid_date(62,2339
-    void empty_menu_is_returned_when_no_data_is_found(74,2747
-    void menu_is_returned_when_data_is_found(86,3126
+public final class ShowMenuUseCaseTest 40,1834
+    private MenuRepository repository;43,1886
+    private ShowMenuUseCase useCase;46,1943
+    public void setup(48,1981
+    void ensure_repository_find_method_is_called_once(53,2081
+    void exception_is_thrown_with_invalid_date(63,2411
+    void empty_menu_is_returned_when_no_data_is_found(75,2819
+    void menu_is_returned_when_data_is_found(87,3198
 
 app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Domain/MenuTest.java,112
 public final class MenuTest 23,899
@@ -490,6 +490,13 @@ app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Domain/Value/MenuDateT
 public final class MenuDateTest 11,367
     void exception_is_thrown_with_invalid_dates(14,412
     void date_is_created_with_valid_data(41,1112
+
+app/src/test/java/com/roccatagliatta/restaurant/Menu/Integration/Application/ShowMenuUseCaseTest.java,215
+public class ShowMenuUseCaseTest 31,1186
+    private MenuRepository repository;34,1237
+    private ShowMenuUseCase useCase;37,1292
+    void empty_menu_is_returned_when_no_data_is_found(40,1340
+    @Sql(50,1643
 
 app/src/test/java/com/roccatagliatta/restaurant/RestaurantApplicationTests.java,67
 class RestaurantApplicationTests 7,153

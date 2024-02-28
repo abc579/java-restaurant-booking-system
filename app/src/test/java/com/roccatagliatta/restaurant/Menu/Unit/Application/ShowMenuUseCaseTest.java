@@ -1,4 +1,4 @@
-package com.roccatagliatta.restaurant.Menu.Application;
+package com.roccatagliatta.restaurant.Menu.Unit.Application;
 
 import java.util.Map;
 import java.util.List;
@@ -29,6 +29,7 @@ import com.roccatagliatta.restaurant.Menu.Domain.Persistence.MenuRepository;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuId;
 import com.roccatagliatta.restaurant.Menu.Domain.Menu;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItem;
+import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemId;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemId;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemName;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItemDescription;
@@ -84,11 +85,11 @@ public final class ShowMenuUseCaseTest {
 
     @Test
     void menu_is_returned_when_data_is_found() throws Exception {
-        final ShowMenuRequest req = new ShowMenuRequest("2023", "0", "0");
+        final ShowMenuRequest req = new ShowMenuRequest("2023", "0", "1");
         Map<String, Object> res = new HashMap<>();
 
         final MenuId id = new MenuId("e3e3884e-4885-4cc1-91a9-801a655c6e5d");
-        final MenuDate date = new MenuDate(req.year(), req.month(), req.week());
+        final MenuDate date = new MenuDate(req.year(), req.month(), req.day());
         final List<MenuItem> items = new ArrayList<>();
         items.add(new MenuItem(new MenuItemId("f04645b8-6ad2-411f-b68f-75722700a8e6"),
                                new MenuItemName("Food name test"),
@@ -105,18 +106,19 @@ public final class ShowMenuUseCaseTest {
         assertNotNull(res.get("menu"));
 
         final Menu menuReturned = (Menu) res.get("menu");
+        final MenuItem menuItem = menuReturned.items().get(0);
 
         assertEquals("e3e3884e-4885-4cc1-91a9-801a655c6e5d", menuReturned.id().value().toString());
 
         assertEquals(2023, menuReturned.date().year());
         assertEquals(0, menuReturned.date().month());
-        assertEquals(1, menuReturned.date().week()); // Java adds one because yes
+        assertEquals(1, menuReturned.date().day());
 
-        assertEquals("f04645b8-6ad2-411f-b68f-75722700a8e6", menuReturned.items().get(0).id().value().toString());
-        assertEquals("Food name test", menuReturned.items().get(0).name().value());
-        assertEquals("Food name description", menuReturned.items().get(0).description().value());
-        assertEquals(MenuItemCategory.DESSERTS, menuReturned.items().get(0).category());
-        assertEquals(2, menuReturned.items().get(0).category().value());
-        assertEquals(new BigDecimal("20.00"), menuReturned.items().get(0).price().value());
+        assertEquals("f04645b8-6ad2-411f-b68f-75722700a8e6", menuItem.id().value().toString());
+        assertEquals("Food name test", menuItem.name().value());
+        assertEquals("Food name description", menuItem.description().value());
+        assertEquals(MenuItemCategory.DESSERTS, menuItem.category());
+        assertEquals(2, menuItem.category().value());
+        assertEquals(new BigDecimal("20.00"), menuItem.price().value());
     }
 }
