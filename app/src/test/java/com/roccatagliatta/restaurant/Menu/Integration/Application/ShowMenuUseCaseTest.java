@@ -25,7 +25,7 @@ import com.roccatagliatta.restaurant.Menu.Domain.Menu;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItem;
 
 @SpringJUnitConfig
-@Sql("/test_data.sql")
+@Sql("/Data_ShowMenuUseCaseTest.sql")
 @SpringBootTest
 @Transactional
 public class ShowMenuUseCaseTest {
@@ -47,7 +47,6 @@ public class ShowMenuUseCaseTest {
     }
 
     @Test
-    @Sql({"/test_data.sql"})
     void menu_is_returned_when_data_is_found() throws ShowMenuUseCaseException {
         final ShowMenuRequest req = new ShowMenuRequest("2024", "1", "1");
         Map<String, Object> res = new HashMap<>();

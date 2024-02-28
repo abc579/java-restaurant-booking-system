@@ -437,14 +437,14 @@ final class UserIdTest 12,436
     void exception_is_thrown_when_id_is_invalid(15,472
     void creates_valid_uuid_with_valid_id(31,945
 
-app/src/test/java/com/roccatagliatta/restaurant/User/Integration/SignUpUseCaseTest.java,408
-final class SignUpUseCaseTest 20,874
-    private PasswordEncryptor encryptor;23,922
-    private SignUpUseCase useCase;26,979
-    private UserRepository repository;29,1030
-    void exception_is_thrown_when_user_email_already_exists_in_database(32,1080
-    void exception_is_thrown_when_username_already_exists_in_database(52,1895
-    void user_is_created_and_database_returns_data_successfully(72,2720
+app/src/test/java/com/roccatagliatta/restaurant/User/Integration/SignUpUseCaseTest.java,411
+final class SignUpUseCaseTest 25,1053
+    private PasswordEncryptor encryptor;28,1101
+    private SignUpUseCase useCase;31,1158
+    private UserRepository repository;34,1209
+    void exception_is_thrown_when_user_email_already_exists_in_database(37,1259
+    void exception_is_thrown_when_username_already_exists_in_database(53,2015
+    void user_is_created_and_database_returns_data_successfully(69,2770
 
 app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Application/ShowMenuUseCaseTest.java,407
 public final class ShowMenuUseCaseTest 40,1834
@@ -491,12 +491,12 @@ public final class MenuDateTest 11,367
     void exception_is_thrown_with_invalid_dates(14,412
     void date_is_created_with_valid_data(41,1112
 
-app/src/test/java/com/roccatagliatta/restaurant/Menu/Integration/Application/ShowMenuUseCaseTest.java,215
-public class ShowMenuUseCaseTest 31,1186
-    private MenuRepository repository;34,1237
-    private ShowMenuUseCase useCase;37,1292
-    void empty_menu_is_returned_when_no_data_is_found(40,1340
-    @Sql(50,1643
+app/src/test/java/com/roccatagliatta/restaurant/Menu/Integration/Application/ShowMenuUseCaseTest.java,251
+public class ShowMenuUseCaseTest 31,1201
+    private MenuRepository repository;34,1252
+    private ShowMenuUseCase useCase;37,1307
+    void empty_menu_is_returned_when_no_data_is_found(40,1355
+    void menu_is_returned_when_data_is_found(50,1658
 
 app/src/test/java/com/roccatagliatta/restaurant/RestaurantApplicationTests.java,67
 class RestaurantApplicationTests 7,153
