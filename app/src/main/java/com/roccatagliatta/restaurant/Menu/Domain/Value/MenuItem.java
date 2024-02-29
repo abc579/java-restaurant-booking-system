@@ -11,8 +11,8 @@ public final class MenuItem {
     private MenuItemCategory category;
     private MenuItemPrice price;
 
-    public MenuItem(MenuItemId id, MenuItemName name, MenuItemDescription description,
-                    MenuItemCategory category, MenuItemPrice price) {
+    public MenuItem(final MenuItemId id, final MenuItemName name, final MenuItemDescription description,
+                    final MenuItemCategory category, final MenuItemPrice price) {
         this.id = id;
         this.name = name;
         this.description = description;

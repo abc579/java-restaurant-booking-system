@@ -7,13 +7,9 @@ import com.roccatagliatta.restaurant.User.Domain.Value.*;
 public final class User {
 
     private UserId id;
-
     private UserName username;
-
     private UserPassword password;
-
     private UserEmail email;
-
     private UserType type;
 
     public User(UserId id,

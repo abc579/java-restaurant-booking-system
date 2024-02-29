@@ -30,7 +30,6 @@ public class SecurityConfig {
         return new AuthTokenFilter();
     }
 
-    // TODO: need to sync this with BCryptPasswordEncryptor
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -50,7 +49,7 @@ public class SecurityConfig {
         // Disable CSRF because we use JWT.
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/user/signup", "/user/signin").permitAll()
+                .requestMatchers("/menu/show", "/user/signup", "/user/signin", "/menu/show").permitAll()
                         .anyRequest().authenticated())
                 .csrf((csrf) -> csrf.disable())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))

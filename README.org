@@ -62,8 +62,8 @@ For all of these actions, the user has to be already logged in.
 1. As an admin, I additionally want the option of "promote" a waitress to manager and viceversa.
 
 * TO DO
-- Have only one .sql file inside /mysql to store fixtures. Simplify integration tests.
 
+- ShowMenuUseCase is not working, the response is not being sent correctly, something about serializing or idk
 - Handle cases where the json input is wrong in controllers. (LATER)
 - Do Unit and Integration tests of them. (LATER)
 - Functional tests. (LATER)

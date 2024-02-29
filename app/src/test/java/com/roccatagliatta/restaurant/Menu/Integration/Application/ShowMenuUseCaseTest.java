@@ -6,9 +6,6 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.test.context.jdbc.Sql;
-
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,8 +21,6 @@ import com.roccatagliatta.restaurant.Menu.Domain.Persistence.MenuRepository;
 import com.roccatagliatta.restaurant.Menu.Domain.Menu;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItem;
 
-@SpringJUnitConfig
-@Sql("/Data_ShowMenuUseCaseTest.sql")
 @SpringBootTest
 @Transactional
 public class ShowMenuUseCaseTest {
@@ -39,7 +34,7 @@ public class ShowMenuUseCaseTest {
     @Test
     void empty_menu_is_returned_when_no_data_is_found() throws ShowMenuUseCaseException {
         final ShowMenuRequest req = new ShowMenuRequest("2023", "0", "0");
-        Map<String, Object> res = new HashMap<>();
+        Map<String, Menu> res = new HashMap<>();
 
         useCase.run(req, res);
 
@@ -49,7 +44,7 @@ public class ShowMenuUseCaseTest {
     @Test
     void menu_is_returned_when_data_is_found() throws ShowMenuUseCaseException {
         final ShowMenuRequest req = new ShowMenuRequest("2024", "1", "1");
-        Map<String, Object> res = new HashMap<>();
+        Map<String, Menu> res = new HashMap<>();
 
         useCase.run(req, res);
 

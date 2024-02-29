@@ -3,6 +3,7 @@ package com.roccatagliatta.restaurant.Menu.Infrastructure;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.roccatagliatta.restaurant.Menu.Domain.Menu;
 import com.roccatagliatta.restaurant.Menu.Application.ShowMenuUseCase;
 import com.roccatagliatta.restaurant.Menu.Application.Exception.ShowMenuUseCaseException;
 
@@ -20,13 +21,15 @@ public final class ShowMenuController {
 
     @GetMapping("/menu/show")
     public ResponseEntity<?> show(@RequestBody final ShowMenuRequest req) {
-        Map<String, Object> res = new HashMap<>();
-
         try {
+            Map<String, Menu> res = new HashMap<>();
+
             useCase.run(req, res);
 
-            return ResponseEntity.ok().body(res);
+            return ResponseEntity.ok().body("You're bad");
         } catch (final ShowMenuUseCaseException ex) {
+            Map<String, String> res = new HashMap<>();
+
             switch (ex.errorCode) {
                 case ShowMenuUseCaseException.INVALID_DATE:
                     res.put("error", "Invalid date.");

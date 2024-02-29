@@ -19,7 +19,7 @@ public final class ShowMenuUseCase {
     @Autowired
     private MenuRepository repository;
 
-    public void run(final ShowMenuRequest req, Map<String, Object> res) throws ShowMenuUseCaseException {
+    public void run(final ShowMenuRequest req, Map<String, Menu> res) throws ShowMenuUseCaseException {
         try {
             final MenuDate date = new MenuDate(req.year(), req.month(), req.day());
 

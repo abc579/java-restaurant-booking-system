@@ -10,7 +10,7 @@ public final class MenuDate {
     private static final int RESTAURANT_OPEN_YEAR = 2023;
     private Calendar value;
 
-    public MenuDate(String year, String month, String day) throws InvalidMenuDate {
+    public MenuDate(final String year, final String month, final String day) throws InvalidMenuDate {
         try {
             final Integer yearInt = Integer.valueOf(year);
             final Integer monthInt = Integer.valueOf(month);
@@ -42,5 +42,10 @@ public final class MenuDate {
 
     public String toString() {
         return value.toString();
+    }
+
+    // NOTE: this is needed for the bloody jackson lib
+    public Calendar value() {
+        return value;
     }
 }

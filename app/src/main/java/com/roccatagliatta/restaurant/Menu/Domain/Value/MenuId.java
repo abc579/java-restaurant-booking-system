@@ -8,7 +8,7 @@ public final class MenuId {
 
     private RestaurantId value;
 
-    public MenuId(String value) throws InvalidMenuId {
+    public MenuId(final String value) throws InvalidMenuId {
         try {
             this.value = new RestaurantId(value);
         } catch (final InvalidRestaurantIdException ex) {

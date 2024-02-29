@@ -3,9 +3,6 @@ package com.roccatagliatta.restaurant.User.Integration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.test.context.jdbc.Sql;
-
 import com.roccatagliatta.restaurant.PasswordEncryptor.PasswordEncryptor;
 import com.roccatagliatta.restaurant.User.Domain.Value.*;
 import com.roccatagliatta.restaurant.User.Domain.User;
@@ -18,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringJUnitConfig
-@Sql("/Data_SignUpUseCaseTest.sql")
 @SpringBootTest
 @Transactional
 final class SignUpUseCaseTest {

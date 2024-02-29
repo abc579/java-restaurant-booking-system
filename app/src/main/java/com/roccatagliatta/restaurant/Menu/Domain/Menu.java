@@ -2,6 +2,7 @@ package com.roccatagliatta.restaurant.Menu.Domain;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.Objects;
 
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuDate;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuId;
@@ -31,11 +32,27 @@ public final class Menu {
         return List.copyOf(items);
     }
 
+    public MenuDate date() {
+        return date;
+    }
+
     public void setMenuItems(final List<MenuItem> items) {
         this.items = items;
     }
 
-    public MenuDate date() {
-        return date;
+    public boolean equals(Object object) {
+        if (this == object)
+            return true;
+
+        if (object == null || getClass() != object.getClass())
+            return false;
+
+        final Menu menu = (Menu) object;
+
+        return Objects.equals(id, menu.id());
+    }
+
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
     }
 }
