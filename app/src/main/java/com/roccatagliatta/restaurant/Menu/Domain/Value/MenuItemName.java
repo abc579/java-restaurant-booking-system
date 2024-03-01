@@ -14,7 +14,7 @@ public final class MenuItemName {
         this.value = name;
     }
 
-    public String value() {
+    public String getValue() {
         return value;
     }
 }

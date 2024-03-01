@@ -29,10 +29,10 @@ public final class MenuItemTest {
 
         final MenuItem menuItem = new MenuItem(id, name, description, category, price);
 
-        assertEquals(id.value().toString(), menuItem.id().value().toString());
-        assertEquals(name.value(), menuItem.name().value());
-        assertEquals(description.value(), menuItem.description().value());
-        assertEquals(category.value(), menuItem.category().value());
-        assertEquals(price.value(), menuItem.price().value());
+        assertEquals(id.getValue().toString(), menuItem.getId().getValue().toString());
+        assertEquals(name.getValue(), menuItem.getName().getValue());
+        assertEquals(description.getValue(), menuItem.getDescription().getValue());
+        assertEquals(category.getValue(), menuItem.getCategory().getValue());
+        assertEquals(price.getValue(), menuItem.getPrice().getValue());
     }
 }

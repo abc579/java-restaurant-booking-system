@@ -41,7 +41,7 @@ public final class MenuDate {
     }
 
     // NOTE: this is needed for the bloody jackson lib
-    public Calendar value() {
+    public Calendar getValue() {
         return value;
     }
 }

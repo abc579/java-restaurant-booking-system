@@ -27,7 +27,7 @@ public final class MenuItemPriceTest {
         try {
             final MenuItemPrice price = new MenuItemPrice(valid);
 
-            assertEquals(valid, price.value().toString());
+            assertEquals(valid, price.getValue().toString());
         } catch (final Exception ex) {
             assertTrue(false);
         }

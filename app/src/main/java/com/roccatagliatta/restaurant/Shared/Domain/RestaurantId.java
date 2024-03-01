@@ -21,7 +21,7 @@ public final class RestaurantId {
         }
     }
 
-    public UUID value() {
+    public UUID getValue() {
         return value;
     }
 

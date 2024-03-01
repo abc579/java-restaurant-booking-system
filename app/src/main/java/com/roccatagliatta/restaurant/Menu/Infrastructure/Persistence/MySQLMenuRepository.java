@@ -56,7 +56,7 @@ public final class MySQLMenuRepository implements MenuRepository {
                     } catch (final Exception ex) {
                         return null;
                     }
-                }, menu.get(0).id().value().toString());
+                }, menu.get(0).getId().getValue().toString());
 
         menu.get(0).setMenuItems(menuItems);
 

@@ -14,7 +14,7 @@ public final class MenuItemDescription {
         this.value = description;
     }
 
-    public String value() {
+    public String getValue() {
         return value;
     }
 }

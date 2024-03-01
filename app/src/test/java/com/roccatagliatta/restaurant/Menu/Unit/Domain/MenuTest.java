@@ -36,18 +36,18 @@ public final class MenuTest {
         assertAll(() -> {
                 final Menu menu = new Menu(id, date, items);
 
-                assertEquals("e3e3884e-4885-4cc1-91a9-801a655c6e5d", menu.id().value().toString());
+                assertEquals("e3e3884e-4885-4cc1-91a9-801a655c6e5d", menu.getId().getValue().toString());
 
-                assertEquals(2024, menu.date().year());
-                assertEquals(2, menu.date().month());
-                assertEquals(1, menu.date().day());
+                assertEquals(2024, menu.getDate().year());
+                assertEquals(2, menu.getDate().month());
+                assertEquals(1, menu.getDate().day());
 
-                assertEquals("f04645b8-6ad2-411f-b68f-75722700a8e6", menu.items().get(0).id().value().toString());
-                assertEquals("Food name test", menu.items().get(0).name().value());
-                assertEquals("Food name description", menu.items().get(0).description().value());
-                assertEquals(MenuItemCategory.DESSERTS, menu.items().get(0).category());
-                assertEquals(2, menu.items().get(0).category().value());
-                assertEquals(new BigDecimal("20.00"), menu.items().get(0).price().value());
+                assertEquals("f04645b8-6ad2-411f-b68f-75722700a8e6", menu.getItems().get(0).getId().getValue().toString());
+                assertEquals("Food name test", menu.getItems().get(0).getName().getValue());
+                assertEquals("Food name description", menu.getItems().get(0).getDescription().getValue());
+                assertEquals(MenuItemCategory.DESSERTS, menu.getItems().get(0).getCategory());
+                assertEquals(2, menu.getItems().get(0).getCategory().getValue());
+                assertEquals(new BigDecimal("20.00"), menu.getItems().get(0).getPrice().getValue());
         });
     }
 }

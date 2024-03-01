@@ -18,7 +18,7 @@ public final class MenuItemId {
         }
     }
 
-    public RestaurantId value() {
+    public RestaurantId getValue() {
         return value;
     }
 

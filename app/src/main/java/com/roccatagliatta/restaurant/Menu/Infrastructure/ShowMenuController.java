@@ -7,6 +7,7 @@ import com.roccatagliatta.restaurant.Menu.Domain.Menu;
 import com.roccatagliatta.restaurant.Menu.Application.ShowMenuUseCase;
 import com.roccatagliatta.restaurant.Menu.Application.Exception.ShowMenuUseCaseException;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +32,7 @@ public final class ShowMenuController {
 
             useCase.run(req, res);
 
-            Menu menu = res.get("menu");
-
-            return ResponseEntity.ok().body(menu);
+            return ResponseEntity.ok().body(res);
         } catch (final ShowMenuUseCaseException ex) {
             Map<String, String> res = new HashMap<>();
 

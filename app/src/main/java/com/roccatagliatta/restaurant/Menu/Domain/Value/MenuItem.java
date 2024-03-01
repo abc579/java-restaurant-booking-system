@@ -20,23 +20,23 @@ public final class MenuItem {
         this.price = price;
     }
 
-    public MenuItemId id() {
+    public MenuItemId getId() {
         return id;
     }
 
-    public MenuItemName name() {
+    public MenuItemName getName() {
         return name;
     }
 
-    public MenuItemDescription description() {
+    public MenuItemDescription getDescription() {
         return description;
     }
 
-    public MenuItemCategory category() {
+    public MenuItemCategory getCategory() {
         return category;
     }
 
-    public MenuItemPrice price() {
+    public MenuItemPrice getPrice() {
         return price;
     }
 }

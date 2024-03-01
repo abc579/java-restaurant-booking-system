@@ -24,7 +24,7 @@ public enum MenuItemCategory {
         throw new InvalidMenuItemCategoryException();
     }
 
-    public int value() {
+    public int getValue() {
         return value;
     }
 }

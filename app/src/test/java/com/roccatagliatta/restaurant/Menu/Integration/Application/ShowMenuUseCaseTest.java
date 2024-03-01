@@ -51,17 +51,17 @@ public class ShowMenuUseCaseTest {
         assertNotNull(res.get("menu"));
 
         final Menu menu = (Menu) res.get("menu");
-        final MenuItem menuItem = menu.items().get(0);
+        final MenuItem menuItem = menu.getItems().get(0);
 
-        assertEquals("e03d8309-41fd-4dfd-979d-fd5663e911bb", menu.id().value().toString());
-        assertEquals(2024, menu.date().year());
-        assertEquals(1, menu.date().month());
-        assertEquals(1, menu.date().day());
+        assertEquals("e03d8309-41fd-4dfd-979d-fd5663e911bb", menu.getId().getValue().toString());
+        assertEquals(2024, menu.getDate().year());
+        assertEquals(1, menu.getDate().month());
+        assertEquals(1, menu.getDate().day());
 
-        assertEquals("bcccbdd2-777b-4e44-8198-0b59f9793a82", menuItem.id().value().toString());
-        assertEquals("Dummy Food Name", menuItem.name().value());
-        assertEquals("Dummy Food Description", menuItem.description().value());
-        assertEquals(0, menuItem.category().value());
-        assertEquals(new BigDecimal("20.55"), menuItem.price().value());
+        assertEquals("bcccbdd2-777b-4e44-8198-0b59f9793a82", menuItem.getId().getValue().toString());
+        assertEquals("Dummy Food Name", menuItem.getName().getValue());
+        assertEquals("Dummy Food Description", menuItem.getDescription().getValue());
+        assertEquals(0, menuItem.getCategory().getValue());
+        assertEquals(new BigDecimal("20.55"), menuItem.getPrice().getValue());
     }
 }

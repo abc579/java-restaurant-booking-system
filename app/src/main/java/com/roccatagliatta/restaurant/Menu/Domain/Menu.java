@@ -13,9 +13,9 @@ import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItem;
 public final class Menu {
 
     private MenuId id;
+
     private MenuDate date;
 
-    @JsonIgnore
     private List<MenuItem> items;
 
     public Menu(final MenuId id, final MenuDate date) {
@@ -28,15 +28,15 @@ public final class Menu {
         this.items = items;
     }
 
-    public MenuId id() {
+    public MenuId getId() {
         return id;
     }
 
-    public List<MenuItem> items() {
+    public List<MenuItem> getItems() {
         return List.copyOf(items);
     }
 
-    public MenuDate date() {
+    public MenuDate getDate() {
         return date;
     }
 
@@ -53,7 +53,7 @@ public final class Menu {
 
         final Menu menu = (Menu) object;
 
-        return Objects.equals(id, menu.id());
+        return Objects.equals(id, menu.getId());
     }
 
     public int hashCode() {

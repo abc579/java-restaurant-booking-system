@@ -16,7 +16,7 @@ public final class MenuItemPrice {
         }
     }
 
-    public BigDecimal value() {
+    public BigDecimal getValue() {
         return value;
     }
 }

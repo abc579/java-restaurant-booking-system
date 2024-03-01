@@ -27,7 +27,7 @@ public final class MenuItemDescriptionTest {
         try {
             final MenuItemDescription description = new MenuItemDescription(valid);
 
-            assertEquals(valid, description.value());
+            assertEquals(valid, description.getValue());
         } catch (final Exception ex) {
             assertTrue(false);
         }

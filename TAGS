@@ -71,18 +71,18 @@ public final class SignUpController 25,1191
 app/src/main/java/com/roccatagliatta/restaurant/User/Domain/User.java,476
 public final class User 7,138
     private UserId id;9,165
-    private UserName username;11,189
-    private UserPassword password;13,221
-    private UserEmail email;15,257
-    private UserType type;17,287
-    public User(19,315
-    public UserId id(31,617
-    public UserName username(35,668
-    public UserPassword password(39,733
-    public UserEmail email(43,802
-    public UserType type(47,862
-    public boolean equals(51,919
-    public int hashCode(65,1383
+    private UserName username;10,188
+    private UserPassword password;11,219
+    private UserEmail email;12,254
+    private UserType type;13,283
+    public User(15,311
+    public UserId id(27,613
+    public UserName username(31,664
+    public UserPassword password(35,729
+    public UserEmail email(39,798
+    public UserType type(43,858
+    public boolean equals(47,915
+    public int hashCode(61,1379
 
 app/src/main/java/com/roccatagliatta/restaurant/User/Domain/Exception/InvalidUserEmailException.java,51
 public final class InvalidUserEmailException 3,62
@@ -167,15 +167,15 @@ public enum UserType 5,144
     public static UserType valueOf(final int value) throws 20,375
     public static UserType valueOf(final int value) throws InvalidUserTypeException 20,375
 
-app/src/main/java/com/roccatagliatta/restaurant/Shared/Domain/RestaurantId.java,280
+app/src/main/java/com/roccatagliatta/restaurant/Shared/Domain/RestaurantId.java,283
 public final class RestaurantId 7,170
     private UUID value;9,205
     private static final String REGEX 10,229
     public RestaurantId(12,351
-    public UUID value(24,734
-    public boolean equals(29,803
-    public int hashCode(37,1112
-    public String toString(42,1225
+    public UUID getValue(24,734
+    public boolean equals(29,806
+    public int hashCode(37,1115
+    public String toString(42,1228
 
 app/src/main/java/com/roccatagliatta/restaurant/Shared/Domain/Exception/InvalidRestaurantIdException.java,54
 public final class InvalidRestaurantIdException 3,64
@@ -205,21 +205,23 @@ public final class MySQLMenuRepository 24,1027
     public Optional<Menu> find(30,1164
 
 app/src/main/java/com/roccatagliatta/restaurant/Menu/Infrastructure/ShowMenuController.java,132
-public final class ShowMenuController 16,581
-    private ShowMenuUseCase useCase;19,637
-    public ResponseEntity<?> show(22,705
+public final class ShowMenuController 19,740
+    private ShowMenuUseCase useCase;22,796
+    public ResponseEntity<?> show(25,864
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Menu.java,324
-public final class Menu 10,293
-    private MenuId id;12,320
-    private MenuDate date;13,343
-    private List<MenuItem> items;14,370
-    public Menu(16,405
-    public Menu(21,516
-    public MenuId id(26,659
-    public List<MenuItem> items(30,710
-    public void setMenuItems(34,788
-    public MenuDate date(38,882
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Menu.java,401
+public final class Menu 13,372
+    private MenuId id;15,399
+    private MenuDate date;17,423
+    private List<MenuItem> items;19,451
+    public Menu(21,486
+    public Menu(26,597
+    public MenuId getId(31,740
+    public List<MenuItem> getItems(35,794
+    public MenuDate getDate(39,875
+    public void setMenuItems(43,935
+    public boolean equals(47,1029
+    public int hashCode(59,1314
 
 app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Persistence/MenuRepository.java,39
 public interface MenuRepository 8,213
@@ -245,36 +247,37 @@ public final class InvalidMenuItemName 3,68
 app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/Exception/InvalidMenuId.java,39
 public final class InvalidMenuId 3,68
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemId.java,179
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemId.java,182
 public final class MenuItemId 9,323
     private RestaurantId value;11,356
     public MenuItemId(13,389
-    public RestaurantId value(21,634
-    public String toString(26,711
+    public RestaurantId getValue(21,634
+    public String toString(26,714
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuDate.java,279
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuDate.java,315
 public final class MenuDate 8,205
     private static final int RESTAURANT_OPEN_YEAR 10,236
     private Calendar value;11,294
     public MenuDate(13,323
-    public int year(31,1085
-    public int month(35,1157
-    public int day(39,1231
-    public String toString(43,1310
+    public int year(27,895
+    public int month(31,967
+    public int day(35,1041
+    public String toString(39,1120
+    public Calendar getValue(44,1246
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemDescription.java,148
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemDescription.java,151
 public final class MenuItemDescription 5,152
     private String value;7,194
     public MenuItemDescription(9,221
-    public String value(17,502
+    public String getValue(17,502
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemPrice.java,145
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemPrice.java,148
 public final class MenuItemPrice 7,176
     private BigDecimal value;9,212
     public MenuItemPrice(11,243
-    public BigDecimal value(19,483
+    public BigDecimal getValue(19,483
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItem.java,476
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItem.java,491
 public final class MenuItem 6,111
     private MenuItemId id;8,142
     private MenuItemName name;9,169
@@ -282,28 +285,28 @@ public final class MenuItem 6,111
     private MenuItemCategory category;11,245
     private MenuItemPrice price;12,284
     public MenuItem(14,318
-    public MenuItemId id(23,632
-    public MenuItemName name(27,687
-    public MenuItemDescription description(31,748
-    public MenuItemCategory category(35,830
-    public MenuItemPrice price(39,903
+    public MenuItemId getId(23,662
+    public MenuItemName getName(27,720
+    public MenuItemDescription getDescription(31,784
+    public MenuItemCategory getCategory(35,869
+    public MenuItemPrice getPrice(39,945
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuId.java,237
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuId.java,240
 public final class MenuId 7,295
     private RestaurantId value;9,324
     public MenuId(11,357
-    public RestaurantId value(19,590
-    public boolean equals(23,653
-    public int hashCode(30,924
-    public String toString(35,1037
+    public RestaurantId getValue(19,596
+    public boolean equals(23,662
+    public int hashCode(30,933
+    public String toString(35,1046
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemName.java,134
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemName.java,137
 public final class MenuItemName 5,145
     private String value;7,180
     public MenuItemName(9,207
-    public String value(17,431
+    public String getValue(17,431
 
-app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemCategory.java,1013
+app/src/main/java/com/roccatagliatta/restaurant/Menu/Domain/Value/MenuItemCategory.java,1016
 public enum MenuItemCategory 5,158
     APPETIZERS(6,189
     MAIN_COURSES(7,208
@@ -329,7 +332,7 @@ public enum MenuItemCategory 5,158
     public static MenuItemCategory valueOf(final int value) throws InvalidMenuItemCategoryException 17,378
     public 27,718
     public int 27,718
-    public int value(27,718
+    public int getValue(27,718
 
 app/src/main/java/com/roccatagliatta/restaurant/Security/UserDetailsImpl.java,801
 public final class UserDetailsImpl 15,460
@@ -341,16 +344,16 @@ public final class UserDetailsImpl 15,460
     private GrantedAuthority authority;27,699
     public UserDetailsImpl(29,740
     public static UserDetailsImpl build(37,1015
-    public Collection<? extends GrantedAuthority> getAuthorities(48,1465
-    public UUID getId(52,1576
-    public String getEmail(56,1628
-    public String getPassword(61,1702
-    public String getUsername(66,1782
-    public boolean isAccountNonExpired(71,1862
-    public boolean isAccountNonLocked(76,1947
-    public boolean isCredentialsNonExpired(81,2031
-    public boolean isEnabled(86,2120
-    public boolean equals(91,2195
+    public Collection<? extends GrantedAuthority> getAuthorities(48,1468
+    public UUID getId(52,1579
+    public String getEmail(56,1631
+    public String getPassword(61,1705
+    public String getUsername(66,1785
+    public boolean isAccountNonExpired(71,1865
+    public boolean isAccountNonLocked(76,1950
+    public boolean isCredentialsNonExpired(81,2034
+    public boolean isEnabled(86,2123
+    public boolean equals(91,2198
 
 app/src/main/java/com/roccatagliatta/restaurant/Security/AuthTokenFilter.java,224
 public final class AuthTokenFilter 17,690
@@ -369,10 +372,10 @@ public class SecurityConfig 20,1164
     private UserDetailsServiceImpl userDetailsService;23,1210
     private AuthEntryPointJwt unauthorizedHandler;26,1281
     public AuthTokenFilter authenticationJwtTokenFilter(29,1343
-    public PasswordEncoder passwordEncoder(35,1518
-    public DaoAuthenticationProvider authenticationProvider(40,1626
-    public SecurityFilterChain securityFilterChain(49,1943
-    public AuthenticationManager authenticationManager(67,2775
+    public PasswordEncoder passwordEncoder(34,1458
+    public DaoAuthenticationProvider authenticationProvider(39,1566
+    public SecurityFilterChain securityFilterChain(48,1883
+    public AuthenticationManager authenticationManager(66,2735
 
 app/src/main/java/com/roccatagliatta/restaurant/Security/AuthEntryPointJwt.java,78
 public final class AuthEntryPointJwt 14,410
@@ -452,9 +455,9 @@ public final class ShowMenuUseCaseTest 40,1834
     private ShowMenuUseCase useCase;46,1943
     public void setup(48,1981
     void ensure_repository_find_method_is_called_once(53,2081
-    void exception_is_thrown_with_invalid_date(63,2411
-    void empty_menu_is_returned_when_no_data_is_found(75,2819
-    void menu_is_returned_when_data_is_found(87,3198
+    void exception_is_thrown_with_invalid_date(63,2403
+    void empty_menu_is_returned_when_no_data_is_found(75,2803
+    void menu_is_returned_when_data_is_found(87,3174
 
 app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Domain/MenuTest.java,112
 public final class MenuTest 23,899
@@ -486,17 +489,17 @@ public final class MenuItemPriceTest 12,439
     void exception_is_thrown_when_invalid_price(15,489
     void creates_menu_item_price_when_price_is_valid(24,747
 
-app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Domain/Value/MenuDateTest.java,146
+app/src/test/java/com/roccatagliatta/restaurant/Menu/Unit/Domain/Value/MenuDateTest.java,145
 public final class MenuDateTest 11,367
     void exception_is_thrown_with_invalid_dates(14,412
-    void date_is_created_with_valid_data(41,1112
+    void date_is_created_with_valid_data(33,902
 
 app/src/test/java/com/roccatagliatta/restaurant/Menu/Integration/Application/ShowMenuUseCaseTest.java,251
 public class ShowMenuUseCaseTest 26,1020
     private MenuRepository repository;29,1071
     private ShowMenuUseCase useCase;32,1126
     void empty_menu_is_returned_when_no_data_is_found(35,1174
-    void menu_is_returned_when_data_is_found(45,1477
+    void menu_is_returned_when_data_is_found(45,1469
 
 app/src/test/java/com/roccatagliatta/restaurant/RestaurantApplicationTests.java,67
 class RestaurantApplicationTests 7,153

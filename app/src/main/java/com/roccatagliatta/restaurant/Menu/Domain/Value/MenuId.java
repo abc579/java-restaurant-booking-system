@@ -16,7 +16,7 @@ public final class MenuId {
         }
     }
 
-    public RestaurantId value() {
+    public RestaurantId getValue() {
         return value;
     }
 

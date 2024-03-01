@@ -26,7 +26,7 @@ public final class MenuItemNameTest {
 
         try {
             final MenuItemName name = new MenuItemName(valid);
-            assertEquals(valid, name.value());
+            assertEquals(valid, name.getValue());
         } catch (final Exception ex) {
             assertTrue(false);
         }
