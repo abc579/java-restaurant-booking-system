@@ -33,7 +33,7 @@ public class ShowMenuUseCaseTest {
 
     @Test
     void empty_menu_is_returned_when_no_data_is_found() throws ShowMenuUseCaseException {
-        final ShowMenuRequest req = new ShowMenuRequest("2023", "0", "0");
+        final ShowMenuRequest req = new ShowMenuRequest(2023, 0, 0);
         Map<String, Menu> res = new HashMap<>();
 
         useCase.run(req, res);
@@ -43,7 +43,7 @@ public class ShowMenuUseCaseTest {
 
     @Test
     void menu_is_returned_when_data_is_found() throws ShowMenuUseCaseException {
-        final ShowMenuRequest req = new ShowMenuRequest("2024", "1", "1");
+        final ShowMenuRequest req = new ShowMenuRequest(2024, 1, 1);
         Map<String, Menu> res = new HashMap<>();
 
         useCase.run(req, res);

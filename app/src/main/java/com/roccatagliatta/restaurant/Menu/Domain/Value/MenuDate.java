@@ -10,19 +10,15 @@ public final class MenuDate {
     private static final int RESTAURANT_OPEN_YEAR = 2023;
     private Calendar value;
 
-    public MenuDate(final String year, final String month, final String day) throws InvalidMenuDate {
+    public MenuDate(final int year, final int month, final int day) throws InvalidMenuDate {
         try {
-            final Integer yearInt = Integer.valueOf(year);
-            final Integer monthInt = Integer.valueOf(month);
-            final Integer dayInt = Integer.valueOf(day);
-
             // Trivial stuff that GregorianCalendar handles differently and it's confusing, plus one
             // quick validation for the year.
-            if (monthInt < 0 || monthInt > 11 || dayInt < 0 || yearInt < RESTAURANT_OPEN_YEAR) {
+            if (month < 0 || month > 11 || day < 0 || year < RESTAURANT_OPEN_YEAR) {
                 throw new InvalidMenuDate();
             }
 
-            value = new GregorianCalendar(yearInt, monthInt, dayInt);
+            value = new GregorianCalendar(year, month, day);
         } catch (final IllegalArgumentException ex) {
             throw new InvalidMenuDate();
         }

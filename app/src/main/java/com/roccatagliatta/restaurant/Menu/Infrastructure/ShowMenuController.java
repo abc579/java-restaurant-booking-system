@@ -7,6 +7,7 @@ import com.roccatagliatta.restaurant.Menu.Domain.Menu;
 import com.roccatagliatta.restaurant.Menu.Application.ShowMenuUseCase;
 import com.roccatagliatta.restaurant.Menu.Application.Exception.ShowMenuUseCaseException;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +21,19 @@ public final class ShowMenuController {
     private ShowMenuUseCase useCase;
 
     @GetMapping("/menu/show")
-    public ResponseEntity<?> show(@RequestBody final ShowMenuRequest req) {
+    public ResponseEntity<?> show(@RequestParam(value = "year") int year,
+                                  @RequestParam(value = "month") int month,
+                                  @RequestParam(value = "day") int day) {
         try {
+            final ShowMenuRequest req = new ShowMenuRequest(year, month, day);
+
             Map<String, Menu> res = new HashMap<>();
 
             useCase.run(req, res);
 
-            return ResponseEntity.ok().body("You're bad");
+            Menu menu = res.get("menu");
+
+            return ResponseEntity.ok().body(menu);
         } catch (final ShowMenuUseCaseException ex) {
             Map<String, String> res = new HashMap<>();
 

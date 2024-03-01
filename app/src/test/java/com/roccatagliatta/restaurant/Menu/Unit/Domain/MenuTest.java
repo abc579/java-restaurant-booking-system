@@ -25,7 +25,7 @@ public final class MenuTest {
     @Test
     void menu_is_created_with_valid_data_and_returns_correct_values() throws Exception {
         final MenuId id = new MenuId("e3e3884e-4885-4cc1-91a9-801a655c6e5d");
-        final MenuDate date = new MenuDate("2024", "2", "1");
+        final MenuDate date = new MenuDate(2024, 2, 1);
         final List<MenuItem> items = new ArrayList<>();
         items.add(new MenuItem(new MenuItemId("f04645b8-6ad2-411f-b68f-75722700a8e6"),
                                new MenuItemName("Food name test"),

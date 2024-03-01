@@ -51,7 +51,7 @@ public final class ShowMenuUseCaseTest {
 
     @Test
     void ensure_repository_find_method_is_called_once() throws ShowMenuUseCaseException {
-        final ShowMenuRequest req = new ShowMenuRequest("2024", "0", "0");
+        final ShowMenuRequest req = new ShowMenuRequest(2024, 0, 0);
         Map<String, Menu> res = new HashMap<>();
 
         useCase.run(req, res);
@@ -61,7 +61,7 @@ public final class ShowMenuUseCaseTest {
 
     @Test
     void exception_is_thrown_with_invalid_date() {
-        final ShowMenuRequest req = new ShowMenuRequest("2024", "-1", "-1");
+        final ShowMenuRequest req = new ShowMenuRequest(2024, -1, -1);
         Map<String, Menu> res = new HashMap<>();
 
         var exception = assertThrows(ShowMenuUseCaseException.class, () -> {
@@ -75,7 +75,7 @@ public final class ShowMenuUseCaseTest {
     void empty_menu_is_returned_when_no_data_is_found() throws ShowMenuUseCaseException {
         Mockito.when(repository.find(any())).thenReturn(Optional.empty());
 
-        final ShowMenuRequest req = new ShowMenuRequest("2023", "0", "0");
+        final ShowMenuRequest req = new ShowMenuRequest(2023, 0, 0);
         Map<String, Menu> res = new HashMap<>();
 
         useCase.run(req, res);
@@ -85,7 +85,7 @@ public final class ShowMenuUseCaseTest {
 
     @Test
     void menu_is_returned_when_data_is_found() throws Exception {
-        final ShowMenuRequest req = new ShowMenuRequest("2023", "0", "1");
+        final ShowMenuRequest req = new ShowMenuRequest(2023, 0, 1);
         Map<String, Menu> res = new HashMap<>();
 
         final MenuId id = new MenuId("e3e3884e-4885-4cc1-91a9-801a655c6e5d");

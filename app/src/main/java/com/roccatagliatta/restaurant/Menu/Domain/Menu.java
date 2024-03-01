@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuDate;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuId;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuItem;
@@ -12,6 +14,8 @@ public final class Menu {
 
     private MenuId id;
     private MenuDate date;
+
+    @JsonIgnore
     private List<MenuItem> items;
 
     public Menu(final MenuId id, final MenuDate date) {

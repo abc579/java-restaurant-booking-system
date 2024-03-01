@@ -12,20 +12,12 @@ public final class MenuDateTest {
 
     @Test
     void exception_is_thrown_with_invalid_dates() {
-        final String[][] invalidDates = {
-            {null, "1", "1"},
-            {"1", null, "1"},
-            {"1", "1", null},
+        final int[][] invalidDates = {
+            {1, -1, 1},
+            {1, 1, -1},
 
-            {"ab", "1", "1"},
-            {"1", "ab", "1"},
-            {"1", "1", "ab"},
-
-            {"1", "-1", "1"},
-            {"1", "1", "-1"},
-
-            {"1", "13", "ab"},
-            {"1", "1", "20"}
+            {1, 13, 1},
+            {1, 1, 20}
         };
 
         for (int i = 0; i < invalidDates.length; ++i) {
@@ -40,11 +32,11 @@ public final class MenuDateTest {
     @Test
     void date_is_created_with_valid_data() throws InvalidMenuDate {
         assertAll(() -> {
-                new MenuDate("2024", "1", "1");
-                new MenuDate("2024", "0", "1");
-                new MenuDate("2024", "11", "3");
-                new MenuDate("2024", "1", "4");
-                new MenuDate("2024", "3", "5");
+                new MenuDate(2024, 1, 1);
+                new MenuDate(2024, 0, 1);
+                new MenuDate(2024, 11, 3);
+                new MenuDate(2024, 1, 4);
+                new MenuDate(2024, 3, 5);
         });
     }
 }
