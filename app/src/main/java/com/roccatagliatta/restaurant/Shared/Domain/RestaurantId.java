@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.Shared.Domain;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.UUID;
 
 import com.roccatagliatta.restaurant.Shared.Domain.Exception.InvalidRestaurantIdException;
@@ -21,6 +23,7 @@ public final class RestaurantId {
         }
     }
 
+    @JsonValue
     public UUID getValue() {
         return value;
     }

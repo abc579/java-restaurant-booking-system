@@ -3,6 +3,8 @@ package com.roccatagliatta.restaurant.Menu.Domain.Value;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import com.roccatagliatta.restaurant.Menu.Domain.Value.Exception.InvalidMenuDate;
 
 public final class MenuDate {
@@ -41,6 +43,7 @@ public final class MenuDate {
     }
 
     // NOTE: this is needed for the bloody jackson lib
+    @JsonValue
     public Calendar getValue() {
         return value;
     }

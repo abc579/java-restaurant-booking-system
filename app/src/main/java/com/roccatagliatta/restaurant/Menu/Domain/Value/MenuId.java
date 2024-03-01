@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.Menu.Domain.Value;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import com.roccatagliatta.restaurant.Menu.Domain.Value.Exception.InvalidMenuId;
 import com.roccatagliatta.restaurant.Shared.Domain.RestaurantId;
 import com.roccatagliatta.restaurant.Shared.Domain.Exception.InvalidRestaurantIdException;
@@ -16,6 +18,7 @@ public final class MenuId {
         }
     }
 
+    @JsonValue
     public RestaurantId getValue() {
         return value;
     }

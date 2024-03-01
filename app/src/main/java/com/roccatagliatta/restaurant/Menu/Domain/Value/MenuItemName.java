@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.Menu.Domain.Value;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import com.roccatagliatta.restaurant.Menu.Domain.Value.Exception.InvalidMenuItemName;
 
 public final class MenuItemName {
@@ -14,6 +16,7 @@ public final class MenuItemName {
         this.value = name;
     }
 
+    @JsonValue
     public String getValue() {
         return value;
     }

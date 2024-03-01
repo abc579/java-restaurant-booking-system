@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuDate;
 import com.roccatagliatta.restaurant.Menu.Domain.Value.MenuId;

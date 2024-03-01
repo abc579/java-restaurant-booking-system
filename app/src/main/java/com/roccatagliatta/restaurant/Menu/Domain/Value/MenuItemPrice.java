@@ -1,5 +1,7 @@
 package com.roccatagliatta.restaurant.Menu.Domain.Value;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.math.BigDecimal;
 
 import com.roccatagliatta.restaurant.Menu.Domain.Value.Exception.InvalidMenuItemPrice;
@@ -16,6 +18,7 @@ public final class MenuItemPrice {
         }
     }
 
+    @JsonValue
     public BigDecimal getValue() {
         return value;
     }
