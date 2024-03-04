@@ -5,12 +5,12 @@ The project consists of a java application that handles online reservations of a
 The Roccatagliatta Reservation System includes the following features:
 
 *** For Customers
-0. *View Available Tables*: Customers can check available tables by specifying date, time and number of guests.
-1. *Create Reservation*: Customers can book a table by specifying the date, time, and number of guests.
-2. *Modify Reservation*: Allows for the modification of an existing reservation.
-3. *Cancel Reservation*: Provides the option to cancel a reservation.
-4. *View Menu*: Customers can view the restaurant's menu.
-5. *Special Requests*: Option to add special requests (e.g., dietary restrictions) to their reservation.
+1. *View Available Tables*: Customers can check available tables by specifying date, time and number of guests.
+2. *Create Reservation*: Customers can book a table by specifying the date, time, and number of guests.
+3. *Modify Reservation*: Allows for the modification of an existing reservation.
+4. *Cancel Reservation*: Provides the option to cancel a reservation.
+5. *View Menu*: Customers can view the restaurant's menu. --> DONE
+6. *Special Requests*: Option to add special requests (e.g., dietary restrictions) to their reservation.
 
 *** For Restaurant Staff
 0. *Manage Reservations*: Staff can view, confirm, modify, or cancel reservations.
@@ -63,7 +63,7 @@ For all of these actions, the user has to be already logged in.
 
 * TO DO
 
-- ShowMenuUseCase is not working, the response is not being sent correctly, something about serializing or idk
+- 
 - Handle cases where the json input is wrong in controllers. (LATER)
 - Do Unit and Integration tests of them. (LATER)
 - Functional tests. (LATER)

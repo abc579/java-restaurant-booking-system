@@ -38,3 +38,18 @@ values (
        "Dummy Food Description",
        0,
        20.55);
+
+insert into menu_items (
+       id,
+       menu_id,
+       name,
+       description,
+       category,
+       price)
+values (
+       "3f80f369-01e6-450d-be29-e7666e1c7af7",
+       "e03d8309-41fd-4dfd-979d-fd5663e911bb",
+       "Dummy Food 2 Name",
+       "Dummy Food 2 Description",
+       1,
+       69.69);
