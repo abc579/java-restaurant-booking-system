@@ -30,33 +30,33 @@ public final class MySQLMenuRepository implements MenuRepository {
     public Optional<Menu> find(final MenuDate date) {
         // @NOTE: This will return a single value!
         List<Menu> menu = jdbcTemplate.query("select id from menus where year = ? and month = ? and day = ?",
-                (rs, rowNum) -> {
-                    try {
-                        final MenuId id = new MenuId(rs.getString("id"));
-                        return new Menu(id, date);
-                    } catch (final Exception ex) {
-                        return null;
-                    }
-                }, date.year(), date.month(), date.day());
+                                             (rs, rowNum) -> {
+                                                 try {
+                                                     final MenuId id = new MenuId(rs.getString("id"));
+                                                     return new Menu(id, date);
+                                                 } catch (final Exception ex) {
+                                                     return null;
+                                                 }
+                                             }, date.year(), date.month(), date.day());
 
         if (menu.isEmpty()) {
             return Optional.empty();
         }
 
         List<MenuItem> menuItems = jdbcTemplate.query("select id, name, description, category, price from menu_items where menu_id = ?",
-                (rs, rowNum) -> {
-                    try {
-                        final MenuItemId id = new MenuItemId(rs.getString("id"));
-                        final MenuItemName name = new MenuItemName(rs.getString("name"));
-                        final MenuItemDescription description = new MenuItemDescription(rs.getString("description"));
-                        final MenuItemCategory category = MenuItemCategory.valueOf(Integer.parseInt(rs.getString("category")));
-                        final MenuItemPrice price = new MenuItemPrice(rs.getString("price"));
+                                                      (rs, rowNum) -> {
+                                                          try {
+                                                              final MenuItemId id = new MenuItemId(rs.getString("id"));
+                                                              final MenuItemName name = new MenuItemName(rs.getString("name"));
+                                                              final MenuItemDescription description = new MenuItemDescription(rs.getString("description"));
+                                                              final MenuItemCategory category = MenuItemCategory.valueOf(Integer.parseInt(rs.getString("category")));
+                                                              final MenuItemPrice price = new MenuItemPrice(rs.getString("price"));
 
-                        return new MenuItem(id, name, description, category, price);
-                    } catch (final Exception ex) {
-                        return null;
-                    }
-                }, menu.get(0).getId().getValue().toString());
+                                                              return new MenuItem(id, name, description, category, price);
+                                                          } catch (final Exception ex) {
+                                                              return null;
+                                                          }
+                                                      }, menu.get(0).getId().getValue().toString());
 
         menu.get(0).setMenuItems(menuItems);
 

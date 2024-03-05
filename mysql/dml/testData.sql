@@ -24,6 +24,17 @@ values (
        1,
        1);
 
+insert into menus (
+       id,
+       year,
+       month,
+       day)
+values (
+       "f5eeb8ee-fc60-4f11-8800-0601af11148b",
+       2024,
+       2,
+       2);
+
 insert into menu_items (
        id,
        menu_id,
@@ -48,7 +59,7 @@ insert into menu_items (
        price)
 values (
        "3f80f369-01e6-450d-be29-e7666e1c7af7",
-       "e03d8309-41fd-4dfd-979d-fd5663e911bb",
+       "f5eeb8ee-fc60-4f11-8800-0601af11148b",
        "Dummy Food 2 Name",
        "Dummy Food 2 Description",
        1,

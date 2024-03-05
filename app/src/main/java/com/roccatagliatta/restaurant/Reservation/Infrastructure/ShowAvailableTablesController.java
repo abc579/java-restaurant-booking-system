@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
+import com.roccatagliatta.restaurant.Reservation.Application.ShowAvailableTablesUseCase;
+import com.roccatagliatta.restaurant.Reservation.Application.Exception.ShowAvailableTablesUseCaseException;
+import com.roccatagliatta.restaurant.Reservation.Domain.Table;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +37,9 @@ public final class ShowAvailableTablesController {
             switch (ex.errorCode) {
             case ShowAvailableTablesUseCaseException.INVALID_DATE:
                 res.put("error", "Invalid date.");
+                break;
+            case ShowAvailableTablesUseCaseException.INTERNAL_ERROR:
+                res.put("error", "Internal error.");
                 break;
             }
 
