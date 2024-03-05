@@ -10,7 +10,7 @@ public final class TableSeats {
         try {
             final int seats = Integer.valueOf(seatsStr);
 
-            if (seats <= 0) {
+            if (seats <= 0 || seats > 10) {
                 throw new InvalidTableSeats();
             }
 

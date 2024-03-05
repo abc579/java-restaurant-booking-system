@@ -19,7 +19,7 @@ public final class ShowAvailableTablesUseCaseException 3,74
 app/src/main/java/com/roccatagliatta/restaurant/Reservation/Application/ShowAvailableTablesUseCase.java,129
 public final class ShowAvailableTablesUseCase 20,736
     private TableRepository repository;23,800
-    public void run(25,841
+    public void run(26,883
 
 app/src/main/java/com/roccatagliatta/restaurant/Reservation/Infrastructure/ShowAvailableTablesRequest.java,53
 public final record ShowAvailableTablesRequest(3,67
@@ -49,7 +49,7 @@ app/src/main/java/com/roccatagliatta/restaurant/Reservation/Domain/Value/TableSe
 public final class TableSeats 5,157
     private int seats;7,190
     public TableSeats(9,214
-    public int getSeats(23,587
+    public int getSeats(23,601
 
 app/src/main/java/com/roccatagliatta/restaurant/Reservation/Domain/Value/Exception/InvalidTableId.java,40
 public final class InvalidTableId 3,75
@@ -450,6 +450,31 @@ public class JwtUtils 17,439
     public String getUserNameFromJwtToken(57,1681
     public boolean validateJwtToken(62,1874
     public String generateTokenFromUsername(79,2575
+
+app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Application/ShowAvailableTablesUseCaseTest.java,540
+public final class ShowAvailableTablesUseCaseTest 29,1239
+    private TableRepository repository;32,1302
+    private ShowAvailableTablesUseCase useCase;35,1360
+    public void setup(37,1409
+    void ensure_repository_find_available_tables_is_called_once(42,1510
+    void exception_is_thrown_with_invalid_date(54,2050
+    void exception_is_thrown_when_something_goes_wrong_in_repository(59,2127
+    void table_is_returned_when_there_are_available_tables(64,2226
+    void null_is_returned_when_there_are_not_available_tables(69,2315
+
+app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Domain/TableTest.java,87
+public final class TableTest 10,367
+    void table_is_created_with_valid_data(13,409
+
+app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Domain/Value/TableSeatsTest.java,160
+public final class TableSeatsTest 10,391
+    void exception_is_thrown_with_invalid_seats(13,438
+    void table_seats_are_created_when_seats_are_valid(27,756
+
+app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Domain/Value/TableIdTest.java,147
+public final class TableIdTest 10,385
+    void exception_is_thrown_with_invalid_ids(13,429
+    void table_id_is_created_when_id_is_valid(26,721
 
 app/src/test/java/com/roccatagliatta/restaurant/User/Unit/Application/SignUpUseCaseTest.java,337
 final class SignUpUseCaseTest 26,1041

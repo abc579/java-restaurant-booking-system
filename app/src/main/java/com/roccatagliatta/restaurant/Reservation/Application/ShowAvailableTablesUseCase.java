@@ -22,7 +22,8 @@ public final class ShowAvailableTablesUseCase {
     @Autowired
     private TableRepository repository;
 
-    public void run(Map<String, List<Table>> res, final ShowAvailableTablesRequest req)
+    // TODO: this probably needs cleanup.
+    public void run(final ShowAvailableTablesRequest req, Map<String, List<Table>> res)
         throws ShowAvailableTablesUseCaseException {
         try {
             final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
@@ -39,11 +40,9 @@ public final class ShowAvailableTablesUseCase {
 
             final Optional<List<Table>> availableTables = repository.findAvailableTables(givenInstant.toString(), givenInstantPlusTwoHours.toString());
 
-            if (availableTables.isEmpty()) {
-                res.put("tables", null);
-            } else {
-                res.put("tables", availableTables.get());
-            }
+            res.put("tables", availableTables.get());
+        } catch (final ShowAvailableTablesUseCaseException ex) {
+            throw ex;
         } catch (final Exception ex) {
             throw ShowAvailableTablesUseCaseException.internalError();
         }

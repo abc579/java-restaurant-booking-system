@@ -19,7 +19,7 @@ public final class MySQLTableRepository implements TableRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Optional<List<Table>> findAvailableTables(final String startDate, final String endDate) {
+    public Optional<List<Table>> findAvailableTables(String startDate, String endDate) {
         List<Table> tables = jdbcTemplate.query("select id, seats from tables t where t.seats >= ? and not exist (select 1 from reservations r where r.table_id = t.table_id and ? > r.start_time and ? < r.end_time)",
                                                 (rs, rowNum) -> {
                                                     try {

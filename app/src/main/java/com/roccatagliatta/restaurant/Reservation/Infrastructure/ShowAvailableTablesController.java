@@ -28,7 +28,7 @@ public final class ShowAvailableTablesController {
 
             Map<String, List<Table>> res = new HashMap<>();
 
-            useCase.run(res, req);
+            useCase.run(req, res);
 
             return ResponseEntity.ok().body(res);
         } catch (final ShowAvailableTablesUseCaseException ex) {
