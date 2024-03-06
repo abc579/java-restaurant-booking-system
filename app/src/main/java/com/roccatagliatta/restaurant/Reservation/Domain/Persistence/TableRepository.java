@@ -7,6 +7,6 @@ import com.roccatagliatta.restaurant.Reservation.Domain.Table;
 
 public interface TableRepository {
 
-    public Optional<List<Table>> findAvailableTables(String startDate, String endDate);
+    public List<Table> findAvailableTables(String startDate, String endDate, int seats);
 
 }

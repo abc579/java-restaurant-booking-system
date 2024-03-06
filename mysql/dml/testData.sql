@@ -64,3 +64,74 @@ values (
        "Dummy Food 2 Description",
        1,
        69.69);
+
+insert into tables (
+       id,
+       seats
+)
+values (
+       1,
+       2
+);
+
+insert into tables (
+       id,
+       seats
+)
+values (
+       2,
+       2
+);
+
+insert into tables (
+       id,
+       seats
+)
+values (
+       3,
+       2
+);
+
+insert into tables (
+       id,
+       seats
+)
+values (
+       4,
+       2
+);
+
+insert into tables (
+       id,
+       seats
+)
+values (
+       5,
+       4
+);
+
+insert into tables (
+       id,
+       seats
+)
+values (
+       6,
+       2
+);
+
+insert into reservations (
+       id,
+       table_id,
+       name,
+       start_time,
+       end_time,
+       guests
+)
+values (
+       "ba09250b-0a79-47a9-9464-0dc9e1292ce0",
+       5,
+       "Guest Name For Reservation Example",
+       "2099-01-01T10:30:00",
+       "2099-01-01T12:30:00",
+       4
+);

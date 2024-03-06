@@ -2,9 +2,8 @@ package com.roccatagliatta.restaurant.Reservation.Application;
 
 import java.util.Map;
 import java.util.List;
-import java.util.Optional;
 import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.Instant;
 import java.time.ZoneOffset;
 
@@ -22,29 +21,34 @@ public final class ShowAvailableTablesUseCase {
     @Autowired
     private TableRepository repository;
 
-    // TODO: this probably needs cleanup.
     public void run(final ShowAvailableTablesRequest req, Map<String, List<Table>> res)
         throws ShowAvailableTablesUseCaseException {
-        try {
-            final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-            final LocalDateTime givenDateTime = LocalDateTime.parse(req.dateTime(), formatter);
-            final LocalDateTime givenDateTimePlusTwoHours = LocalDateTime.parse(req.dateTime(), formatter);
-            givenDateTimePlusTwoHours.plusHours(2);
-            final Instant givenInstant = givenDateTime.toInstant(ZoneOffset.UTC);
-            final Instant givenInstantPlusTwoHours = givenDateTimePlusTwoHours.toInstant(ZoneOffset.UTC);
-            final Instant now = Instant.now();
+        final ZonedDateTime now = ZonedDateTime.now(ZoneOffset.UTC);
+        final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
-            if (givenInstant.isBefore(now)) {
+        ZonedDateTime givenDateTime = null;
+        List<Table> availableTables = null;
+        ZonedDateTime givenDateTimePlusTwoHours = null;
+
+        try {
+            givenDateTime = ZonedDateTime.parse(req.dateTime(), formatter);
+            givenDateTimePlusTwoHours = givenDateTime.plusHours(2);
+
+            if (givenDateTime.isBefore(now)) {
                 throw ShowAvailableTablesUseCaseException.invalidDate();
             }
 
-            final Optional<List<Table>> availableTables = repository.findAvailableTables(givenInstant.toString(), givenInstantPlusTwoHours.toString());
+        } catch (final Exception ex) {
+            throw ShowAvailableTablesUseCaseException.invalidDate();
+        }
 
-            res.put("tables", availableTables.get());
-        } catch (final ShowAvailableTablesUseCaseException ex) {
-            throw ex;
+        try {
+            availableTables = repository.
+                findAvailableTables(givenDateTime.toString(), givenDateTimePlusTwoHours.toString(), req.seats());
         } catch (final Exception ex) {
             throw ShowAvailableTablesUseCaseException.internalError();
         }
+
+        res.put("tables", availableTables);
     }
 }

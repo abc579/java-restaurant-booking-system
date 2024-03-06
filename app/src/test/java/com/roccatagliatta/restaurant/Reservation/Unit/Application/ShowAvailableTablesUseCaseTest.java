@@ -19,8 +19,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -40,33 +38,50 @@ public final class ShowAvailableTablesUseCaseTest {
 
     @Test
     void ensure_repository_find_available_tables_is_called_once() throws ShowAvailableTablesUseCaseException {
-        Mockito.when(repository.findAvailableTables(any(String.class), any(String.class))).thenReturn(Optional.empty());
+        Mockito.when(repository.findAvailableTables(any(String.class), any(String.class), any(Integer.class))).thenReturn(null);
 
         final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2999-01-01T00:00:00", 1);
         Map<String, List<Table>> res = new HashMap<>();
 
         useCase.run(req, res);
 
-        verify(repository, times(1)).findAvailableTables(any(String.class), any(String.class));
+        verify(repository, times(1)).findAvailableTables(any(String.class), any(String.class), any(Integer.class));
     }
 
     @Test
     void exception_is_thrown_with_invalid_date() {
-        
+        final ShowAvailableTablesRequest[] req = {
+            new ShowAvailableTablesRequest("2999-01-00T00:30:00", 1),
+            new ShowAvailableTablesRequest("2999-01-01T00:60:00", 1),
+            new ShowAvailableTablesRequest("2999-00-01T00:30:00", 1),
+            new ShowAvailableTablesRequest("2999-00-01T-00:00:00", 1),
+        };
+
+        Map<String, List<Table>> res = new HashMap<>();
+
+        var exception0 = assertThrows(ShowAvailableTablesUseCaseException.class, () -> { useCase.run(req[0], res); });
+        var exception1 = assertThrows(ShowAvailableTablesUseCaseException.class, () -> { useCase.run(req[1], res); });
+        var exception2 = assertThrows(ShowAvailableTablesUseCaseException.class, () -> { useCase.run(req[2], res); });
+        var exception3 = assertThrows(ShowAvailableTablesUseCaseException.class, () -> { useCase.run(req[3], res); });
+
+        assertEquals(ShowAvailableTablesUseCaseException.INVALID_DATE, exception0.errorCode);
+        assertEquals(ShowAvailableTablesUseCaseException.INVALID_DATE, exception1.errorCode);
+        assertEquals(ShowAvailableTablesUseCaseException.INVALID_DATE, exception2.errorCode);
+        assertEquals(ShowAvailableTablesUseCaseException.INVALID_DATE, exception3.errorCode);
     }
 
+    /* i can't fucking test this because mockito wont allow me to use a checked exception, dumb shit
     @Test
     void exception_is_thrown_when_something_goes_wrong_in_repository() {
-        
-    }
+        Mockito.when(repository.findAvailableTables(any(String.class), any(String.class), any(Integer.class)))
+            .thenThrow(ShowAvailableTablesUseCaseException.internalError());
 
-    @Test
-    void table_is_returned_when_there_are_available_tables() {
-        
-    }
+        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2999-01-01T00:00:00", 1);
+        Map<String, List<Table>> res = new HashMap<>();
 
-    @Test
-    void null_is_returned_when_there_are_not_available_tables() {
-        
+        var exception = assertThrows(ShowAvailableTablesUseCaseException.class, () -> { useCase.run(req, res); });
+
+        assertEquals(ShowAvailableTablesUseCaseException.INTERNAL_ERROR, exception.errorCode);
     }
+    */
 }

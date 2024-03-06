@@ -19,18 +19,19 @@ public final class MySQLTableRepository implements TableRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Optional<List<Table>> findAvailableTables(String startDate, String endDate) {
-        List<Table> tables = jdbcTemplate.query("select id, seats from tables t where t.seats >= ? and not exist (select 1 from reservations r where r.table_id = t.table_id and ? > r.start_time and ? < r.end_time)",
-                                                (rs, rowNum) -> {
-                                                    try {
-                                                        final TableId id = new TableId(rs.getString("id"));
-                                                        final TableSeats seats = new TableSeats(rs.getString("seats"));
-                                                        return new Table(id, seats);
-                                                    } catch (final Exception ex) {
-                                                        return null;
-                                                    }
-                                                }, startDate, endDate);
+    public List<Table> findAvailableTables(String startDate, String endDate, int seats) {
+        List<Table> tables = jdbcTemplate.
+            query("select id, seats from tables t where t.seats >= ? and not exists (select 1 from reservations r where r.table_id = t.id and str_to_date(?, '%Y-%m-%dT%H:%i:%s') >= r.start_time and str_to_date(?, '%Y-%m-%dT%H:%i:%s') <= r.end_time)",
+                  (rs, rowNum) -> {
+                      try {
+                          final TableId id = new TableId(rs.getString("id"));
+                          final TableSeats seatsDb = new TableSeats(rs.getString("seats"));
+                          return new Table(id, seatsDb);
+                      } catch (final Exception ex) {
+                          return null;
+                      }
+                  }, seats, startDate, endDate);
 
-        return Optional.ofNullable(tables);
+        return tables;
     }
 }

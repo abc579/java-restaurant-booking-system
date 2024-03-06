@@ -17,17 +17,17 @@ public final class ShowAvailableTablesUseCaseException 3,74
     public static ShowAvailableTablesUseCaseException internalError(18,533
 
 app/src/main/java/com/roccatagliatta/restaurant/Reservation/Application/ShowAvailableTablesUseCase.java,129
-public final class ShowAvailableTablesUseCase 20,736
-    private TableRepository repository;23,800
-    public void run(26,883
+public final class ShowAvailableTablesUseCase 19,709
+    private TableRepository repository;22,773
+    public void run(24,814
 
 app/src/main/java/com/roccatagliatta/restaurant/Reservation/Infrastructure/ShowAvailableTablesRequest.java,53
 public final record ShowAvailableTablesRequest(3,67
 
-app/src/main/java/com/roccatagliatta/restaurant/Reservation/Infrastructure/Persistence/MySQLTableRepository.java,155
+app/src/main/java/com/roccatagliatta/restaurant/Reservation/Infrastructure/Persistence/MySQLTableRepository.java,145
 public final class MySQLTableRepository 16,595
     private JdbcTemplate jdbcTemplate;19,680
-    public Optional<List<Table>> findAvailableTables(22,734
+    public List<Table> findAvailableTables(22,734
 
 app/src/main/java/com/roccatagliatta/restaurant/Reservation/Infrastructure/ShowAvailableTablesController.java,154
 public final class ShowAvailableTablesController 18,711
@@ -451,16 +451,13 @@ public class JwtUtils 17,439
     public boolean validateJwtToken(62,1874
     public String generateTokenFromUsername(79,2575
 
-app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Application/ShowAvailableTablesUseCaseTest.java,540
-public final class ShowAvailableTablesUseCaseTest 29,1239
-    private TableRepository repository;32,1302
-    private ShowAvailableTablesUseCase useCase;35,1360
-    public void setup(37,1409
-    void ensure_repository_find_available_tables_is_called_once(42,1510
-    void exception_is_thrown_with_invalid_date(54,2050
-    void exception_is_thrown_when_something_goes_wrong_in_repository(59,2127
-    void table_is_returned_when_there_are_available_tables(64,2226
-    void null_is_returned_when_there_are_not_available_tables(69,2315
+app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Application/ShowAvailableTablesUseCaseTest.java,323
+public final class ShowAvailableTablesUseCaseTest 27,1118
+    private TableRepository repository;30,1181
+    private ShowAvailableTablesUseCase useCase;33,1239
+    public void setup(35,1288
+    void ensure_repository_find_available_tables_is_called_once(40,1389
+    void exception_is_thrown_with_invalid_date(52,1957
 
 app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Domain/TableTest.java,87
 public final class TableTest 10,367
@@ -475,6 +472,12 @@ app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Domain/Value/Ta
 public final class TableIdTest 10,385
     void exception_is_thrown_with_invalid_ids(13,429
     void table_id_is_created_when_id_is_valid(26,721
+
+app/src/test/java/com/roccatagliatta/restaurant/Reservation/Integration/ShowAvailableTablesUseCaseTest.java,274
+public final class ShowAvailableTablesUseCaseTest 19,797
+    private ShowAvailableTablesUseCase useCase;22,865
+    void null_is_returned_when_no_table_is_available_on_given_datetime(25,924
+    void tables_are_returned_when_tables_are_available_on_given_datetime(35,1302
 
 app/src/test/java/com/roccatagliatta/restaurant/User/Unit/Application/SignUpUseCaseTest.java,337
 final class SignUpUseCaseTest 26,1041
