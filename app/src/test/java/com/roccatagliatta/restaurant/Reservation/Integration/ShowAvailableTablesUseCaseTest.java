@@ -23,7 +23,7 @@ public final class ShowAvailableTablesUseCaseTest {
 
     @Test
     void null_is_returned_when_no_table_is_available_on_given_datetime() throws ShowAvailableTablesUseCaseException {
-        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2099-01-01T10:30:00", 4);
+        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2099-01-01T10:30:00+00:00", 4);
         Map<String, List<Table>> res = new HashMap<>();
 
         useCase.run(req, res);
@@ -33,11 +33,11 @@ public final class ShowAvailableTablesUseCaseTest {
 
     @Test
     void tables_are_returned_when_tables_are_available_on_given_datetime() throws ShowAvailableTablesUseCaseException {
-        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2099-01-01T10:00:00", 1);
+        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2099-01-01T10:00:00+00:00", 1);
         Map<String, List<Table>> res = new HashMap<>();
 
         useCase.run(req, res);
 
-        assertEquals(res.get("tables").size(), 5);
+        assertEquals(5, res.get("tables").size());
     }
 }

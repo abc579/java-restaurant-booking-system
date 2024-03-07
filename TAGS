@@ -457,7 +457,7 @@ public final class ShowAvailableTablesUseCaseTest 27,1118
     private ShowAvailableTablesUseCase useCase;33,1239
     public void setup(35,1288
     void ensure_repository_find_available_tables_is_called_once(40,1389
-    void exception_is_thrown_with_invalid_date(52,1957
+    void exception_is_thrown_with_invalid_date(52,1963
 
 app/src/test/java/com/roccatagliatta/restaurant/Reservation/Unit/Domain/TableTest.java,87
 public final class TableTest 10,367
@@ -477,7 +477,7 @@ app/src/test/java/com/roccatagliatta/restaurant/Reservation/Integration/ShowAvai
 public final class ShowAvailableTablesUseCaseTest 19,797
     private ShowAvailableTablesUseCase useCase;22,865
     void null_is_returned_when_no_table_is_available_on_given_datetime(25,924
-    void tables_are_returned_when_tables_are_available_on_given_datetime(35,1302
+    void tables_are_returned_when_tables_are_available_on_given_datetime(35,1308
 
 app/src/test/java/com/roccatagliatta/restaurant/User/Unit/Application/SignUpUseCaseTest.java,337
 final class SignUpUseCaseTest 26,1041

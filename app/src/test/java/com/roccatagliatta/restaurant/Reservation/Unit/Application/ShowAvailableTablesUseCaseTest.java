@@ -40,7 +40,7 @@ public final class ShowAvailableTablesUseCaseTest {
     void ensure_repository_find_available_tables_is_called_once() throws ShowAvailableTablesUseCaseException {
         Mockito.when(repository.findAvailableTables(any(String.class), any(String.class), any(Integer.class))).thenReturn(null);
 
-        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2999-01-01T00:00:00", 1);
+        final ShowAvailableTablesRequest req = new ShowAvailableTablesRequest("2999-01-01T00:00:00+00:00", 1);
         Map<String, List<Table>> res = new HashMap<>();
 
         useCase.run(req, res);
@@ -51,10 +51,10 @@ public final class ShowAvailableTablesUseCaseTest {
     @Test
     void exception_is_thrown_with_invalid_date() {
         final ShowAvailableTablesRequest[] req = {
-            new ShowAvailableTablesRequest("2999-01-00T00:30:00", 1),
-            new ShowAvailableTablesRequest("2999-01-01T00:60:00", 1),
-            new ShowAvailableTablesRequest("2999-00-01T00:30:00", 1),
-            new ShowAvailableTablesRequest("2999-00-01T-00:00:00", 1),
+            new ShowAvailableTablesRequest("2999-01-00T00:30:00+00:00", 1),
+            new ShowAvailableTablesRequest("2999-01-01T00:60:00+00:00", 1),
+            new ShowAvailableTablesRequest("2999-00-01T00:30:00+00:00", 1),
+            new ShowAvailableTablesRequest("2999-00-01T-00:00:00+00:00", 1),
         };
 
         Map<String, List<Table>> res = new HashMap<>();

@@ -21,7 +21,7 @@ public final class MySQLTableRepository implements TableRepository {
     @Override
     public List<Table> findAvailableTables(String startDate, String endDate, int seats) {
         List<Table> tables = jdbcTemplate.
-            query("select id, seats from tables t where t.seats >= ? and not exists (select 1 from reservations r where r.table_id = t.id and str_to_date(?, '%Y-%m-%dT%H:%i:%s') >= r.start_time and str_to_date(?, '%Y-%m-%dT%H:%i:%s') <= r.end_time)",
+            query("select id, seats from tables t where t.seats >= ? and not exists (select 1 from reservations r where r.table_id = t.id and ((? between convert_tz(r.start_time, '+00:00', '+00:00') and convert_tz(r.end_time, '+00:00', '+00:00') or ? between convert_tz(r.start_time, '+00:00', '+00:00') and convert_tz(r.end_time, '+00:00', '+00:00')) or (? <= r.start_time and ? >= r.end_time)))",
                   (rs, rowNum) -> {
                       try {
                           final TableId id = new TableId(rs.getString("id"));
@@ -30,7 +30,7 @@ public final class MySQLTableRepository implements TableRepository {
                       } catch (final Exception ex) {
                           return null;
                       }
-                  }, seats, startDate, endDate);
+        }, seats, startDate, endDate, startDate, endDate);
 
         return tables;
     }

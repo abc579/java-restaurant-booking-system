@@ -24,7 +24,7 @@ public final class ShowAvailableTablesUseCase {
     public void run(final ShowAvailableTablesRequest req, Map<String, List<Table>> res)
         throws ShowAvailableTablesUseCaseException {
         final ZonedDateTime now = ZonedDateTime.now(ZoneOffset.UTC);
-        final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        final DateTimeFormatter formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME;
 
         ZonedDateTime givenDateTime = null;
         List<Table> availableTables = null;
